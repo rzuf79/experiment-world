@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2cv3w1wmv2jq"]
+[gd_scene load_steps=10 format=3 uid="uid://d2cv3w1wmv2jq"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_fpo38"]
 [ext_resource type="PackedScene" uid="uid://dgvn2x06yqugk" path="res://scenes/player.tscn" id="1_y6s1i"]
-[ext_resource type="PackedScene" uid="uid://c281anfhfa0c0" path="res://scenes/locations/tasmania.tscn" id="3_pjscg"]
+[ext_resource type="PackedScene" uid="uid://difx5rwgdqqnn" path="res://scenes/locations/garage.tscn" id="4_enip0"]
+[ext_resource type="PackedScene" uid="uid://v7fbh5m8tg5o" path="res://scenes/hud.tscn" id="4_kctwy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hwhxn"]
 size = Vector3(20, 0.5, 20)
@@ -22,18 +23,16 @@ ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.0
 tonemap_mode = 3
 sdfgi_enabled = true
+glow_enabled = true
+glow_bloom = 0.45
 volumetric_fog_density = 0.031
-
-[sub_resource type="BoxMesh" id="BoxMesh_kompn"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_83gg2"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_fpo38")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 2.08165e-12, -0.25, 2.08165e-12)
+visible = false
 mesh = SubResource("BoxMesh_hwhxn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -44,66 +43,11 @@ shape = SubResource("ConcavePolygonShape3D_2jevw")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7g161")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.36837, -0.368924, 0.853345, -0.175004, 0.873966, 0.453384, -0.913059, -0.316352, 0.25738, 0, 17.3282, 0)
-light_color = Color(1, 0.913725, 0.858824, 1)
-shadow_enabled = true
-shadow_blur = 2.0
-
 [node name="Player" parent="." instance=ExtResource("1_y6s1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53735, 1.21943, 0.424747)
 
-[node name="Box" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715266, 0.5, -8.14609)
-mesh = SubResource("BoxMesh_kompn")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Box"]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("4_kctwy")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_83gg2")
-
-[node name="Box2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93252, 0.5, -13.9416)
-mesh = SubResource("BoxMesh_kompn")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Box2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_83gg2")
-
-[node name="Box3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0827203, 0.5, -12.1523)
-mesh = SubResource("BoxMesh_kompn")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Box3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_83gg2")
-
-[node name="Box4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71277, 0.5, -11.7793)
-mesh = SubResource("BoxMesh_kompn")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Box4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box4/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_83gg2")
-
-[node name="Box5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93557, 0.5, -8.3756)
-mesh = SubResource("BoxMesh_kompn")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Box5"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box5/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_83gg2")
-
-[node name="Box6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9359, 0.5, -15.5772)
-mesh = SubResource("BoxMesh_kompn")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Box6"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box6/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_83gg2")
-
-[node name="Tasmania" parent="." instance=ExtResource("3_pjscg")]
+[node name="Garage" parent="." instance=ExtResource("4_enip0")]

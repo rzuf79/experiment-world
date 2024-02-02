@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx6deyxv4obqq"]
+
+[ext_resource type="Script" path="res://scenes/locations/location_base.gd" id="1_7ti2p"]
+
+[node name="LocationBase" type="Node3D"]
+script = ExtResource("1_7ti2p")
