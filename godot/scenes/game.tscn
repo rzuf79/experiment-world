@@ -17,13 +17,11 @@ sky_material = SubResource("ProceduralSkyMaterial_f0rhd")
 
 [sub_resource type="Environment" id="Environment_7g161"]
 background_mode = 2
-background_energy_multiplier = 0.92
 sky = SubResource("Sky_gwjsx")
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.0
-tonemap_mode = 2
+tonemap_mode = 3
 sdfgi_enabled = true
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.031
 
 [sub_resource type="BoxMesh" id="BoxMesh_kompn"]
@@ -47,8 +45,10 @@ shape = SubResource("ConcavePolygonShape3D_2jevw")
 environment = SubResource("Environment_7g161")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.407827, -0.708262, 0.576231, -6.01732e-18, 0.6311, 0.775702, -0.913059, -0.316352, 0.257379, 0, 17.3282, 0)
+transform = Transform3D(0.36837, -0.368924, 0.853345, -0.175004, 0.873966, 0.453384, -0.913059, -0.316352, 0.25738, 0, 17.3282, 0)
 light_color = Color(1, 0.913725, 0.858824, 1)
+shadow_enabled = true
+shadow_blur = 2.0
 
 [node name="Player" parent="." instance=ExtResource("1_y6s1i")]
 

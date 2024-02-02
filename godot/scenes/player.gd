@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 4.5
 const CAMERA_SENSITIVITY = 50.0
 
 @onready var _camera = $Camera3D
+@onready var _mesh = $MeshInstance3D
 
 var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _look_dir := Vector2.ZERO
@@ -13,6 +14,7 @@ var _look_dir := Vector2.ZERO
 
 func _ready():
 	pass
+	_mesh.visible = false
 
 
 func _physics_process(delta):
