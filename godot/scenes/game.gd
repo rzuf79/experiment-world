@@ -2,7 +2,8 @@ extends Node3D
 
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _input(event : InputEvent):
