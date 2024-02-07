@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcrq3aar4c1ou"]
+
+[ext_resource type="Script" path="res://scenes/objects/grabbable.gd" id="1_xh5so"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6bjyr"]
+size = Vector3(0.176575, 0.563721, 0.157471)
+
+[node name="Grabbable" type="RigidBody3D"]
+script = ExtResource("1_xh5so")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_6bjyr")

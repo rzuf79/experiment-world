@@ -1,0 +1,5 @@
+- collect project ideas in a doc
+- describe the prototype in gdd
+- add dust particles
+- figure out what the intro experiment should be
+- 

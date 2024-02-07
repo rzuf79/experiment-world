@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://difx5rwgdqqnn"]
+[gd_scene load_steps=35 format=3 uid="uid://difx5rwgdqqnn"]
 
 [ext_resource type="PackedScene" uid="uid://dx6deyxv4obqq" path="res://scenes/locations/location_base.tscn" id="1_g6nrk"]
 [ext_resource type="Texture2D" uid="uid://ddbb87ruf4smf" path="res://gfx/crappy_textures/checkered_floor_128.png" id="2_n7lmm"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://8x5wl5mb0x6c" path="res://3d/kenney_furniture/stoolBar.glb" id="8_rsbl0"]
 [ext_resource type="PackedScene" uid="uid://dhhw0r1d2xdgx" path="res://3d/kenney_furniture/table.glb" id="9_wvdof"]
 [ext_resource type="PackedScene" uid="uid://bj5sf777u7a63" path="res://3d/kenney_furniture/doorway.glb" id="10_t0ae1"]
+[ext_resource type="PackedScene" uid="uid://bggwydp1rlka4" path="res://3d/kenney_furniture/ceilingFan.glb" id="11_o0j36"]
+[ext_resource type="PackedScene" uid="uid://btns21bu6d8s8" path="res://3d/untitled folder/window_small.glb" id="12_oae1c"]
+[ext_resource type="Texture2D" uid="uid://cgc0p6bib2n7f" path="res://gfx/misc/fuzzy_circle_32.png" id="13_fbcfu"]
+[ext_resource type="PackedScene" uid="uid://dnwa5nn022rl" path="res://scenes/objects/object_soda.tscn" id="13_wbwuo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkjv7"]
 albedo_texture = ExtResource("2_n7lmm")
@@ -51,6 +55,78 @@ data = PackedVector3Array(-5, 2.5, 0.5, 5, 2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, 0.5,
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_er88v"]
 data = PackedVector3Array(-5, 2.5, 0.5, 5, 2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, 0.5, 5, -2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, -0.5, -5, 2.5, -0.5, 5, -2.5, -0.5, -5, 2.5, -0.5, -5, -2.5, -0.5, 5, -2.5, -0.5, 5, 2.5, 0.5, 5, 2.5, -0.5, 5, -2.5, 0.5, 5, 2.5, -0.5, 5, -2.5, -0.5, 5, -2.5, 0.5, -5, 2.5, -0.5, -5, 2.5, 0.5, -5, -2.5, -0.5, -5, 2.5, 0.5, -5, -2.5, 0.5, -5, -2.5, -0.5, 5, 2.5, 0.5, -5, 2.5, 0.5, 5, 2.5, -0.5, -5, 2.5, 0.5, -5, 2.5, -0.5, 5, 2.5, -0.5, -5, -2.5, 0.5, 5, -2.5, 0.5, -5, -2.5, -0.5, 5, -2.5, 0.5, 5, -2.5, -0.5, -5, -2.5, -0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxg7n"]
+size = Vector3(0.838135, 0.324158, 0.44873)
+
+[sub_resource type="Animation" id="Animation_0vv2c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 6.28319, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_yfv7j"]
+resource_name = "round round"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16), Vector3(3.48787e-16, 6.28319, 3.48787e-16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m642r"]
+_data = {
+"RESET": SubResource("Animation_0vv2c"),
+"round round": SubResource("Animation_yfv7j")
+}
+
+[sub_resource type="Curve" id="Curve_wh6o8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.306557, 1), 0.0, 0.0, 0, 0, Vector2(0.74918, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_46y51"]
+curve = SubResource("Curve_wh6o8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cxji5"]
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 5)
+velocity_pivot = Vector3(10, 10, 4.79213e-12)
+direction = Vector3(5, 4.79213e-12, 4.79213e-12)
+spread = 180.0
+initial_velocity_min = 0.25
+initial_velocity_max = 1.0
+gravity = Vector3(4.79213e-12, 4.79213e-12, 4.79213e-12)
+scale_curve = SubResource("CurveTexture_46y51")
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3g2r4"]
+transparency = 1
+shading_mode = 2
+albedo_texture = ExtResource("13_fbcfu")
+roughness = 0.38
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_b2eb7"]
+material = SubResource("StandardMaterial3D_3g2r4")
+size = Vector2(0.1, 0.1)
+
 [node name="Garage" instance=ExtResource("1_g6nrk")]
 
 [node name="Walls" type="Node3D" parent="." index="0"]
@@ -66,7 +142,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_5uyoe")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Walls" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 5.23101, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4.51039, 2.08165e-12)
 mesh = SubResource("BoxMesh_1ycb5")
 skeleton = NodePath("../..")
 
@@ -143,13 +219,60 @@ transform = Transform3D(3.41203, 0, 0, 0, 3.41203, 0, 0, 0, 3.41203, -0.508535, 
 transform = Transform3D(1.85116, 0, -0.723209, 0, 1.98742, 0, 0.723209, 0, 1.85116, 1.45147, 0, -2.08145)
 
 [node name="table" parent="Props" index="10" instance=ExtResource("9_wvdof")]
-transform = Transform3D(-1.40895e-07, 1.12425e-15, 3.22331, 1.12425e-15, 3.22331, -1.12425e-15, -3.22331, 1.12425e-15, -1.40895e-07, 4.5756, 0.0344653, 1.7933)
+transform = Transform3D(-1.40895e-07, 1.12425e-15, 3.22331, 1.12425e-15, 3.22331, -1.12425e-15, -3.22331, 1.12425e-15, -1.40895e-07, 4.5756, 0.00688249, 1.7933)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="2"]
-transform = Transform3D(0.36837, -0.368924, 0.853345, -0.175004, 0.873966, 0.453384, -0.913059, -0.316352, 0.25738, 0, 17.3282, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/table" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/table/StaticBody3D" index="0"]
+transform = Transform3D(1, -1.31927e-20, 1.77036e-12, -6.76987e-24, 1, 7.71368e-24, -2.01289e-15, -8.24874e-24, 1, 0.419997, 0.162018, -0.224365)
+shape = SubResource("BoxShape3D_cxg7n")
+
+[node name="doorway" parent="Props" index="11" instance=ExtResource("10_t0ae1")]
+transform = Transform3D(2.76209, 0, 0, 0, 2.76209, 0, 0, 0, 2.76209, -0.707549, 2.38419e-07, 5.09706)
+
+[node name="CeilingFan" parent="Props" index="12" instance=ExtResource("11_o0j36")]
+transform = Transform3D(4, -1.39514e-15, 1.78655e-05, 1.39515e-15, 4, -1.39515e-15, -1.78655e-05, 1.39515e-15, 4, 2.08165e-12, 4.30037, 2.08165e-12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/CeilingFan" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_m642r")
+}
+autoplay = "round round"
+
+[node name="Window" parent="Props" index="13" instance=ExtResource("12_oae1c")]
+transform = Transform3D(1.57272, 0, 0, 0, 1.57272, 0, 0, 0, 1.57272, 2.85615, 1.2, 5)
+
+[node name="Window2" parent="Props" index="14" instance=ExtResource("12_oae1c")]
+transform = Transform3D(1.57272, 0, 0, 0, 1.57272, 0, 0, 0, 1.57272, -2.85901, 1.2, 5)
+
+[node name="Objects" type="Node3D" parent="." index="2"]
+
+[node name="ObjectSoda" parent="Objects" index="0" instance=ExtResource("13_wbwuo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71752, 2.89559, 0.591654)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, -3.06206e-16, 0.115402, 0.993319, -3.86707e-16, -0.993319, 0.115402, -1.41759, 6.74938, 11.162)
+visible = false
 light_color = Color(1, 0.913725, 0.858824, 1)
+light_energy = 0.28
 shadow_enabled = true
 shadow_blur = 2.0
 
-[node name="doorway" parent="." index="3" instance=ExtResource("10_t0ae1")]
-transform = Transform3D(2.65235, 0, 0, 0, 2.65235, 0, 0, 0, 2.65235, -0.429443, 2.38419e-07, 5.09706)
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00193, 2.23762, 4.30702)
+light_color = Color(0.94902, 0.835294, 0.713726, 1)
+shadow_enabled = true
+shadow_blur = 4.06
+omni_range = 20.923
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79634, 2.23762, 4.30702)
+light_color = Color(0.94902, 0.835294, 0.713726, 1)
+shadow_blur = 4.06
+omni_range = 20.923
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000402689, 1.4983, 0.000116348)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_cxji5")
+draw_pass_1 = SubResource("QuadMesh_b2eb7")
