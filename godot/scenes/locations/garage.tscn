@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://difx5rwgdqqnn"]
+[gd_scene load_steps=38 format=3 uid="uid://difx5rwgdqqnn"]
 
 [ext_resource type="PackedScene" uid="uid://dx6deyxv4obqq" path="res://scenes/locations/location_base.tscn" id="1_g6nrk"]
 [ext_resource type="Texture2D" uid="uid://ddbb87ruf4smf" path="res://gfx/crappy_textures/checkered_floor_128.png" id="2_n7lmm"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dhhw0r1d2xdgx" path="res://3d/kenney_furniture/table.glb" id="9_wvdof"]
 [ext_resource type="PackedScene" uid="uid://bj5sf777u7a63" path="res://3d/kenney_furniture/doorway.glb" id="10_t0ae1"]
 [ext_resource type="PackedScene" uid="uid://bggwydp1rlka4" path="res://3d/kenney_furniture/ceilingFan.glb" id="11_o0j36"]
-[ext_resource type="PackedScene" uid="uid://btns21bu6d8s8" path="res://3d/untitled folder/window_small.glb" id="12_oae1c"]
+[ext_resource type="PackedScene" uid="uid://btns21bu6d8s8" path="res://3d/misc_models/window_small.glb" id="12_mpsrv"]
+[ext_resource type="PackedScene" uid="uid://cirost61fawfh" path="res://3d/misc_models/whiteboard.glb" id="13_4460d"]
 [ext_resource type="Texture2D" uid="uid://cgc0p6bib2n7f" path="res://gfx/misc/fuzzy_circle_32.png" id="13_fbcfu"]
 [ext_resource type="PackedScene" uid="uid://dnwa5nn022rl" path="res://scenes/objects/object_soda.tscn" id="13_wbwuo"]
 
@@ -96,6 +97,13 @@ _data = {
 "round round": SubResource("Animation_yfv7j")
 }
 
+[sub_resource type="Curve" id="Curve_0uj4s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.251832, 0.476762), 0.0, 0.0, 0, 0, Vector2(0.71337, 0.479108), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_064os"]
+curve = SubResource("Curve_0uj4s")
+
 [sub_resource type="Curve" id="Curve_wh6o8"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.306557, 1), 0.0, 0.0, 0, 0, Vector2(0.74918, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
@@ -113,13 +121,16 @@ initial_velocity_min = 0.25
 initial_velocity_max = 1.0
 gravity = Vector3(4.79213e-12, 4.79213e-12, 4.79213e-12)
 scale_curve = SubResource("CurveTexture_46y51")
+alpha_curve = SubResource("CurveTexture_064os")
 turbulence_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3g2r4"]
 transparency = 1
-shading_mode = 2
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("13_fbcfu")
 roughness = 0.38
+backlight_enabled = true
+disable_receive_shadows = true
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -137,6 +148,7 @@ mesh = SubResource("BoxMesh_q2a63")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Floor" index="0"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Floor/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_5uyoe")
@@ -152,6 +164,7 @@ mesh = SubResource("BoxMesh_jc3o0")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall" index="0"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ku3pe")
@@ -162,6 +175,7 @@ mesh = SubResource("BoxMesh_jc3o0")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall2" index="0"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall2/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_nm0tq")
@@ -172,6 +186,7 @@ mesh = SubResource("BoxMesh_jc3o0")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall3" index="0"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall3/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_wjjfk")
@@ -182,6 +197,7 @@ mesh = SubResource("BoxMesh_jc3o0")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall4" index="0"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall4/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_er88v")
@@ -239,16 +255,20 @@ libraries = {
 }
 autoplay = "round round"
 
-[node name="Window" parent="Props" index="13" instance=ExtResource("12_oae1c")]
+[node name="Window" parent="Props" index="13" instance=ExtResource("12_mpsrv")]
 transform = Transform3D(1.57272, 0, 0, 0, 1.57272, 0, 0, 0, 1.57272, 2.85615, 1.2, 5)
 
-[node name="Window2" parent="Props" index="14" instance=ExtResource("12_oae1c")]
+[node name="Window2" parent="Props" index="14" instance=ExtResource("12_mpsrv")]
 transform = Transform3D(1.57272, 0, 0, 0, 1.57272, 0, 0, 0, 1.57272, -2.85901, 1.2, 5)
+
+[node name="whiteboard" parent="Props" index="15" instance=ExtResource("13_4460d")]
+transform = Transform3D(-1.87358, 6.53479e-16, -1.63793e-07, 6.53479e-16, 1.87358, -6.53479e-16, 1.63793e-07, -6.53479e-16, -1.87358, 4.91043, 1.50282, -2.52046)
 
 [node name="Objects" type="Node3D" parent="." index="2"]
 
 [node name="ObjectSoda" parent="Objects" index="0" instance=ExtResource("13_wbwuo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71752, 2.89559, 0.591654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71752, 1.99333, 0.591654)
+angular_damp = 0.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, -3.06206e-16, 0.115402, 0.993319, -3.86707e-16, -0.993319, 0.115402, -1.41759, 6.74938, 11.162)
@@ -271,8 +291,10 @@ light_color = Color(0.94902, 0.835294, 0.713726, 1)
 shadow_blur = 4.06
 omni_range = 20.923
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="6"]
+[node name="DustParticles" type="GPUParticles3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000402689, 1.4983, 0.000116348)
 amount = 50
+lifetime = 3.0
+randomness = 0.75
 process_material = SubResource("ParticleProcessMaterial_cxji5")
 draw_pass_1 = SubResource("QuadMesh_b2eb7")

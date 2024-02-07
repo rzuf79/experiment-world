@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnwa5nn022rl"]
+[gd_scene load_steps=4 format=3 uid="uid://dnwa5nn022rl"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_sko2o"]
 [ext_resource type="PackedScene" uid="uid://bht1joqw0vesh" path="res://3d/kenney_food/sodaBottle.glb" id="2_hn14r"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t7dn"]
+size = Vector3(0.176575, 0.563721, 0.157471)
+
 [node name="ObjectSoda" instance=ExtResource("1_sko2o")]
 
 [node name="CollisionShape" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0072937, 0.280396, -0.000854492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0072937, 0.0370267, -0.000854492)
+shape = SubResource("BoxShape3D_6t7dn")
 
 [node name="sodaBottle2" parent="." index="1" instance=ExtResource("2_hn14r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.243369, 0)

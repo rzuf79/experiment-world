@@ -7,9 +7,13 @@ const CAMERA_SENSITIVITY = 50.0
 
 @onready var _camera = $Camera3D
 @onready var _mesh = $MeshInstance3D
+@onready var _head_raycast = $Camera3D/RayCast3D
+@onready var _hand_marker = $Camera3D/HandMarker
 
 var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _look_dir := Vector2.ZERO
+
+var _hand_object : Grabbable
 
 
 func _ready():
@@ -44,6 +48,16 @@ func _physics_process(delta):
 func _input(event : InputEvent):
 	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		_look_dir = event.relative * 0.01
+	
+	if event.is_action_pressed("interact"):
+		if _hand_object:
+			_hand_object.set_snap_target(null)
+			_hand_object = null
+		else:
+			var collider = _head_raycast.get_collider()
+			if collider && collider is Grabbable:
+				_hand_object = collider
+				_hand_object.set_snap_target(_hand_marker)
 
 
 func _rotate_camera(delta : float, sensitivity_mod : float = 1.0):

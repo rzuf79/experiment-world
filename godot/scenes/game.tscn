@@ -31,7 +31,7 @@ volumetric_fog_density = 0.031
 script = ExtResource("1_fpo38")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 2.08165e-12, -0.25, 2.08165e-12)
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 2.08165e-12, -0.25, -118.476)
 visible = false
 mesh = SubResource("BoxMesh_hwhxn")
 

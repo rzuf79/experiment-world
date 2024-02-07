@@ -8,6 +8,7 @@
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53735, 1.21943, 6.56668)
+collision_layer = 2
 script = ExtResource("1_qfeeg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -18,3 +19,10 @@ shape = SubResource("CapsuleShape3D_x51jf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(4.79213e-12, 4.79213e-12, -5)
+collision_mask = 4
+
+[node name="HandMarker" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.36575)
