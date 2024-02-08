@@ -22,8 +22,11 @@ sky = SubResource("Sky_gwjsx")
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.0
 tonemap_mode = 3
+ssao_enabled = true
+ssao_radius = 0.3
+ssao_intensity = 0.5
+ssao_power = 15.0
 sdfgi_enabled = true
-glow_enabled = true
 glow_bloom = 0.45
 volumetric_fog_density = 0.031
 

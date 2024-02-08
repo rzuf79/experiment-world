@@ -11,7 +11,7 @@ var _v_error_integral := Vector3.ZERO
 func set_snap_target(snap_target):
 	_snap_target = snap_target
 	can_sleep = snap_target == null
-	continuous_cd = snap_target != null
+	#continuous_cd = snap_target != null
 	gravity_scale = 0 if snap_target else 1
 
 
