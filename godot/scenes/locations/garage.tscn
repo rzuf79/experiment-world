@@ -277,7 +277,6 @@ transform = Transform3D(-1.87358, 6.53479e-16, -1.63793e-07, 6.53479e-16, 1.8735
 
 [node name="ObjectSoda" parent="Objects" index="0" instance=ExtResource("13_wbwuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71752, 1.99333, 0.591654)
-angular_damp = 0.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, -3.06206e-16, 0.115402, 0.993319, -3.86707e-16, -0.993319, 0.115402, -1.41759, 6.74938, 11.162)

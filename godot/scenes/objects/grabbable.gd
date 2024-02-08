@@ -17,6 +17,7 @@ func set_snap_target(snap_target):
 
 func _physics_process(delta):
 	if _snap_target:
+		# POSITION
 		var vec = _snap_target.global_position - global_position
 		var v = vec * SNAP_SPEED # velocity
 		var v_error = v - linear_velocity
@@ -32,6 +33,9 @@ func _physics_process(delta):
 		#add_constant_central_force(vec * delta)
 		#apply_central_impulse(vec * 0.1)
 		
+		# ROTATION
+		angular_velocity = angular_velocity.lerp(Vector3.ZERO, delta * 10.0)
+		rotation_degrees = rotation_degrees.lerp(Vector3.ZERO, delta * 5.0)
 
 
 
