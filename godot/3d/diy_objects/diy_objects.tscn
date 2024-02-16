@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ho4nrhkq1e6o"]
+
+[ext_resource type="PackedScene" uid="uid://51c2ivmvdvsu" path="res://3d/diy_objects/diy_objects.glb" id="1_n3mut"]
+
+[node name="diy_objects" instance=ExtResource("1_n3mut")]
