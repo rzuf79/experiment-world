@@ -3,3 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://51c2ivmvdvsu" path="res://3d/diy_objects/diy_objects.glb" id="1_n3mut"]
 
 [node name="diy_objects" instance=ExtResource("1_n3mut")]
+
+[node name="Skeleton3D" parent="BalloonArmature" index="0"]
+bones/1/rotation = Quaternion(0.267886, 0, 0, 0.963451)
+bones/1/scale = Vector3(0.36197, 0.308625, 0.113217)
+bones/2/rotation = Quaternion(0.53556, 0, 0, 0.844497)
+bones/3/rotation = Quaternion(0.144466, 0, 0, 0.98951)
+bones/3/scale = Vector3(0.659452, 0.659452, 0.659452)
+bones/4/rotation = Quaternion(0.28732, 0, 0, 0.957835)
+bones/4/scale = Vector3(0.961869, 0.96187, 0.96187)
