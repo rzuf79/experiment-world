@@ -1,7 +1,7 @@
 class_name Grabbable
 extends RigidBody3D
 
-const SNAP_SPEED = 30.0
+const SNAP_SPEED = 10.0
 
 var _snap_target : Marker3D = null
 var _previous_v_error := Vector3.ZERO
@@ -27,9 +27,10 @@ func _physics_process(delta):
 		_v_error_integral += v_error * delta
 		var impulse = v_error + error_derivative + (_v_error_integral * 1)
 		
+		#linear_velocity = v
+		
 		apply_central_impulse(impulse * 0.01)
 		#apply_central_force(impulse * 0.1)
-		
 		#add_constant_central_force(vec * delta)
 		#apply_central_impulse(vec * 0.1)
 		
