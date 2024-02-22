@@ -65,7 +65,7 @@ data = PackedVector3Array(-5, 2.5, 0.5, 5, 2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, 0.5,
 data = PackedVector3Array(-5, 2.5, 0.5, 5, 2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, 0.5, 5, -2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, -0.5, -5, 2.5, -0.5, 5, -2.5, -0.5, -5, 2.5, -0.5, -5, -2.5, -0.5, 5, -2.5, -0.5, 5, 2.5, 0.5, 5, 2.5, -0.5, 5, -2.5, 0.5, 5, 2.5, -0.5, 5, -2.5, -0.5, 5, -2.5, 0.5, -5, 2.5, -0.5, -5, 2.5, 0.5, -5, -2.5, -0.5, -5, 2.5, 0.5, -5, -2.5, 0.5, -5, -2.5, -0.5, 5, 2.5, 0.5, -5, 2.5, 0.5, 5, 2.5, -0.5, -5, 2.5, 0.5, -5, 2.5, -0.5, 5, 2.5, -0.5, -5, -2.5, 0.5, 5, -2.5, 0.5, -5, -2.5, -0.5, 5, -2.5, 0.5, 5, -2.5, -0.5, -5, -2.5, -0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxg7n"]
-size = Vector3(0.838135, 0.324158, 0.44873)
+size = Vector3(0.841858, 0.326264, 0.44873)
 
 [sub_resource type="Animation" id="Animation_0vv2c"]
 length = 0.001
@@ -254,7 +254,7 @@ transform = Transform3D(-1.40895e-07, 1.12425e-15, 3.22331, 1.12425e-15, 3.22331
 [node name="StaticBody3D" type="StaticBody3D" parent="Props/table" index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/table/StaticBody3D" index="0"]
-transform = Transform3D(1, -1.31927e-20, 1.77036e-12, -6.76987e-24, 1, 7.71368e-24, -2.01289e-15, -8.24874e-24, 1, 0.419997, 0.162018, -0.224365)
+transform = Transform3D(1, -1.32094e-20, 1.77426e-12, -1.34107e-23, 1, 1.43545e-23, -1.77897e-15, -1.07626e-23, 1, 0.420943, 0.163071, -0.224365)
 shape = SubResource("BoxShape3D_cxg7n")
 
 [node name="doorway" parent="Props" index="11" instance=ExtResource("10_t0ae1")]

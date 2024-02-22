@@ -27,16 +27,18 @@ func _physics_process(delta):
 		_v_error_integral += v_error * delta
 		var impulse = v_error + error_derivative + (_v_error_integral * 1)
 		
-		#linear_velocity = v
+		linear_velocity = v
 		
-		apply_central_impulse(impulse * 0.01)
-		#apply_central_force(impulse * 0.1)
+		#apply_central_impulse(impulse * 0.01)
+		#apply_central_force(impulse * 0.5)
 		#add_constant_central_force(vec * delta)
 		#apply_central_impulse(vec * 0.1)
 		
 		# ROTATION
 		angular_velocity = angular_velocity.lerp(Vector3.ZERO, delta * 10.0)
-		rotation_degrees = rotation_degrees.lerp(Vector3.ZERO, delta * 5.0)
+		#rotation_degrees = rotation_degrees.lerp(_snap_target.global_rotation_degrees, delta * 5.0)
+		var target_quat = _snap_target.global_basis.get_rotation_quaternion()
+		quaternion = quaternion.slerp(target_quat, delta * 5.0)
 
 
 
