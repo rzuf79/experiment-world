@@ -14,6 +14,7 @@ var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _look_dir := Vector2.ZERO
 
 var _hand_object : Grabbable
+var _focused_object = null
 
 
 func _ready():
@@ -43,6 +44,16 @@ func _physics_process(delta):
 
 	_rotate_camera(delta)
 	move_and_slide()
+	
+	# RAYCASTING STUFF
+	var collider = _head_raycast.get_collider()
+	if _focused_object && _focused_object != collider:
+		_focused_object.set_outline_enabled(false)
+		_focused_object = null
+	if collider && collider is Grabbable:
+		_focused_object = collider
+		_focused_object.set_outline_enabled(true)
+	
 
 
 func _input(event : InputEvent):
@@ -51,15 +62,25 @@ func _input(event : InputEvent):
 	
 	if event.is_action_pressed("interact"):
 		if !_hand_object:
-			var collider = _head_raycast.get_collider()
-			if collider && collider is Grabbable:
-				_hand_object = collider
-				_hand_object.set_snap_target(_hand_marker)
+			if _focused_object:
+				grab(_focused_object)
 	
 	if event.is_action_pressed("drop"):
-		if _hand_object:
-			_hand_object.set_snap_target(null)
-			_hand_object = null
+		drop()
+
+
+func grab(object : Grabbable):
+	drop() # if any
+	_hand_object = object
+	_hand_object.set_snap_target(_hand_marker)
+	_head_raycast.add_exception(_hand_object)
+
+
+func drop():
+	if _hand_object:
+		_hand_object.set_snap_target(null)
+		_head_raycast.remove_exception(_hand_object)
+		_hand_object = null
 
 
 func _rotate_camera(delta : float, sensitivity_mod : float = 1.0):

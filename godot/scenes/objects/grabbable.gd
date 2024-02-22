@@ -20,6 +20,11 @@ func _ready():
 			_outlines.append(outline)
 
 
+func set_outline_enabled(value):
+	for outline in _outlines:
+		outline.visible = value
+
+
 func set_snap_target(snap_target):
 	_snap_target = snap_target
 	can_sleep = snap_target == null
