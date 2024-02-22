@@ -65,7 +65,9 @@ func _input(event : InputEvent):
 		_look_dir = event.relative * 0.01
 	
 	if event.is_action_pressed("interact"):
-		if !_hand_object:
+		if _hand_object:
+			_hand_object.on_use(_focused_object)
+		else:
 			if _focused_object:
 				grab(_focused_object)
 	

@@ -36,6 +36,10 @@ func _ready():
 		pick_shape.shape.size = aabb.size / 2
 
 
+func on_use(_with):
+	pass
+
+
 func set_outline_enabled(value):
 	for outline in _outlines:
 		outline.visible = value
