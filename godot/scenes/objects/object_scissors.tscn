@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0p28q1amfhfi"]
+[gd_scene load_steps=11 format=3 uid="uid://0p28q1amfhfi"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_hmsnr"]
 [ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="2_fwbji"]
@@ -58,6 +58,9 @@ _data = {
 "cut": SubResource("Animation_ixf5e")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_danxk"]
+size = Vector3(0.492676, 0.913818, 0.411377)
+
 [node name="ObjectScissors" instance=ExtResource("1_hmsnr")]
 
 [node name="CollisionShape" parent="." index="0"]
@@ -82,3 +85,10 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_a3gb8")
 }
+
+[node name="PickArea" parent="." index="5"]
+monitoring = true
+
+[node name="CollisionShape3D" parent="PickArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00430027, 0.139831, 0.0100033)
+shape = SubResource("BoxShape3D_danxk")

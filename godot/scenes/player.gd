@@ -50,10 +50,14 @@ func _physics_process(delta):
 	if _focused_object && _focused_object != collider:
 		_focused_object.set_outline_enabled(false)
 		_focused_object = null
-	if collider && collider is Grabbable:
-		_focused_object = collider
-		_focused_object.set_outline_enabled(true)
-	
+	if collider:
+		if collider is Grabbable:
+			_focused_object = collider
+		elif collider is Area3D && collider.is_in_group(Consts.GROUP_NAME_PICK_AREAS):
+			_focused_object = collider.get_parent()
+		
+		if _focused_object:
+			_focused_object.set_outline_enabled(true)
 
 
 func _input(event : InputEvent):
@@ -73,13 +77,13 @@ func grab(object : Grabbable):
 	drop() # if any
 	_hand_object = object
 	_hand_object.set_snap_target(_hand_marker)
-	_head_raycast.add_exception(_hand_object)
+	_hand_object.set_raycast_exclude(_head_raycast, true)
 
 
 func drop():
 	if _hand_object:
 		_hand_object.set_snap_target(null)
-		_head_raycast.remove_exception(_hand_object)
+		_hand_object.set_raycast_exclude(_head_raycast, false)
 		_hand_object = null
 
 

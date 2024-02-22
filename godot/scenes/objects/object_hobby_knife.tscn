@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://byuwyeetqgep3"]
+[gd_scene load_steps=7 format=3 uid="uid://byuwyeetqgep3"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_r73hr"]
 [ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="2_onoyq"]
@@ -43,9 +43,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cx1xb")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ya3x2"]
+size = Vector3(0.242188, 0.63501, 0.218994)
+
 [node name="HobbyKnife" instance=ExtResource("1_r73hr")]
+
+[node name="CollisionShape" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0134049, -0.0160674, 0.0047913)
 
 [node name="Hobby Knife" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(0.611755, 0, 0, 0, 0.611755, 0, 0, 0, 0.611755, 0.0128678, -0.100989, 0.00458509)
 mesh = SubResource("ArrayMesh_s6nlp")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" parent="PickArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00390625, -0.00842285, -0.00427246)
+shape = SubResource("BoxShape3D_ya3x2")

@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://vk28ihdbnd1" path="res://materials/focus_outline_material.tres" id="2_8avvc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6bjyr"]
-size = Vector3(0.176575, 0.563721, 0.157471)
+size = Vector3(0.105911, 0.591827, 0.0916138)
 
 [node name="Grabbable" type="RigidBody3D" groups=["interactables"]]
 collision_layer = 4
@@ -15,3 +15,10 @@ outline_material = ExtResource("2_8avvc")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_6bjyr")
+
+[node name="PickArea" type="Area3D" parent="." groups=["object_pick_areas"]]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickArea"]
