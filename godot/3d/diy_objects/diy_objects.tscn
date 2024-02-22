@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://51c2ivmvdvsu" path="res://3d/diy_objects/diy_objects.glb" id="1_n3mut"]
 
 [node name="diy_objects" instance=ExtResource("1_n3mut")]
+
+[node name="Scissor" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08953, 0.0847103, 0.00719739)
