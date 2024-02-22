@@ -7,6 +7,7 @@ signal removed()
 
 @export var outline_material : Material
 @export var interactions : Array[ObjectInteraction]
+@export var spawn_particle : PackedScene
 
 @onready var _pick_area = $PickArea
 
@@ -61,6 +62,11 @@ func on_use(with):
 				with.remove()
 				new_object.global_transform = current_transform
 				parent.add_child(new_object)
+				if new_object.spawn_particle != null:
+					var spawn_particles = new_object.spawn_particle.instantiate()
+					new_object.get_parent().add_child(spawn_particles)
+					spawn_particles.global_position = new_object.global_position
+					spawn_particles.emitting = true
 				break
 
 

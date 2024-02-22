@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://b12gyftm66j16"]
+
+[ext_resource type="Texture2D" uid="uid://bp070lsho4ix3" path="res://gfx/particles/smoke_01.png" id="1_qus8i"]
+[ext_resource type="Script" path="res://code/one_shot_particle.gd" id="2_eqvb6"]
+
+[sub_resource type="Curve" id="Curve_d7l5g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.647609, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ncjw8"]
+curve = SubResource("Curve_d7l5g")
+
+[sub_resource type="Curve" id="Curve_0d2ma"]
+_data = [Vector2(0.00727651, 0), 0.0, 0.0, 0, 0, Vector2(0.242204, 0.456772), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ixolj"]
+curve = SubResource("Curve_0d2ma")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_unmxx"]
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.1, 0.1)
+angle_min = -70.0
+angle_max = 70.0
+inherit_velocity_ratio = 0.03
+velocity_pivot = Vector3(4.79213e-12, 1, 4.79213e-12)
+direction = Vector3(4.79213e-12, 1, 4.79213e-12)
+spread = 180.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.3
+angular_velocity_min = -124.98
+angular_velocity_max = 260.83
+radial_velocity_min = 0.1
+radial_velocity_max = 0.1
+gravity = Vector3(4.79213e-12, 4.79213e-12, 4.79213e-12)
+scale_min = 6.0
+scale_max = 12.0
+scale_curve = SubResource("CurveTexture_ixolj")
+alpha_curve = SubResource("CurveTexture_ncjw8")
+turbulence_enabled = true
+turbulence_noise_strength = 3.71
+turbulence_noise_speed_random = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vacx2"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_qus8i")
+roughness = 0.38
+backlight_enabled = true
+disable_receive_shadows = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_5klkj"]
+material = SubResource("StandardMaterial3D_vacx2")
+size = Vector2(0.1, 0.1)
+
+[node name="SpawnDust" type="GPUParticles3D"]
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.73
+process_material = SubResource("ParticleProcessMaterial_unmxx")
+draw_pass_1 = SubResource("QuadMesh_5klkj")
+script = ExtResource("2_eqvb6")
