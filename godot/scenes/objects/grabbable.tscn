@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://vk28ihdbnd1" path="res://materials/focus_outline_material.tres" id="2_8avvc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6bjyr"]
-size = Vector3(0.0296755, 0.504968, 0.0357704)
+size = Vector3(0.0296755, 0.436932, 0.0357704)
 
 [node name="Grabbable" type="RigidBody3D" groups=["interactables"]]
 collision_layer = 4

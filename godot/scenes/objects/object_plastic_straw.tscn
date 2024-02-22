@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7re1gi3l7ar8"]
+[gd_scene load_steps=8 format=3 uid="uid://bvfxcbys0rlyv"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_vfqbd"]
 [ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="2_glti3"]

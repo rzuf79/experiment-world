@@ -4,7 +4,6 @@ extends Grabbable
 
 
 func on_use(with):
-	if with:
-		print(with.name)
 	_anim.stop(false)
 	_anim.play("cut")
+	super.on_use(with)

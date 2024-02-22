@@ -49,6 +49,7 @@ func _physics_process(delta):
 	var collider = _head_raycast.get_collider()
 	if _focused_object && _focused_object != collider:
 		_focused_object.set_outline_enabled(false)
+		_focused_object.disconnect("removed", _on_focused_object_removed)
 		_focused_object = null
 	if collider:
 		if collider is Grabbable:
@@ -56,7 +57,11 @@ func _physics_process(delta):
 		elif collider is Area3D && collider.is_in_group(Consts.GROUP_NAME_PICK_AREAS):
 			_focused_object = collider.get_parent()
 		
+		if _focused_object.is_removed:
+			_focused_object = null
+		
 		if _focused_object:
+			_focused_object.connect("removed", _on_focused_object_removed)
 			_focused_object.set_outline_enabled(true)
 
 
@@ -96,3 +101,7 @@ func _rotate_camera(delta : float, sensitivity_mod : float = 1.0):
 	var new_rot = _camera.rotation.x - _look_dir.y * CAMERA_SENSITIVITY * sensitivity_mod * delta
 	_camera.rotation.x = clamp(new_rot, -PI/2, PI/2)
 	_look_dir = Vector2.ZERO
+
+
+func _on_focused_object_removed():
+	_focused_object = null

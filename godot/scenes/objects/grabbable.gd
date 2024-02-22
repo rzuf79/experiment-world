@@ -3,9 +3,14 @@ extends RigidBody3D
 
 const SNAP_SPEED = 10.0
 
+signal removed()
+
 @export var outline_material : Material
+@export var interactions : Array[ObjectInteraction]
 
 @onready var _pick_area = $PickArea
+
+var is_removed := false
 
 var _snap_target : Marker3D = null
 var _meshes : Array[MeshInstance3D] = []
@@ -36,8 +41,27 @@ func _ready():
 		pick_shape.shape.size = aabb.size / 2
 
 
-func on_use(_with):
-	pass
+func remove():
+	visible = false
+	is_removed = true
+	emit_signal("removed")
+	queue_free()
+
+
+func on_use(with):
+	if with is Grabbable:
+		var with_scene_path = with.scene_file_path
+		for inter in interactions:
+			if !inter.other_object || !inter.resulting_object:
+				continue
+			if with_scene_path == inter.other_object.resource_path:
+				var current_transform = with.global_transform
+				var parent = with.get_parent_node_3d()
+				var new_object = inter.resulting_object.instantiate()
+				with.remove()
+				new_object.global_transform = current_transform
+				parent.add_child(new_object)
+				break
 
 
 func set_outline_enabled(value):
