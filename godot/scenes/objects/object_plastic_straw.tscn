@@ -46,7 +46,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jwj3f")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ml32f"]
-size = Vector3(0.30423, 0.708496, 0.126495)
+size = Vector3(0.570744, 0.708496, 0.126495)
 
 [node name="ObjectPlasticStraw" instance=ExtResource("1_vfqbd")]
 
@@ -63,5 +63,5 @@ mesh = SubResource("ArrayMesh_deyuq")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" parent="PickArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0599515, 0.103759, 0.00395208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00309533, 0.103759, 0.00395208)
 shape = SubResource("BoxShape3D_ml32f")

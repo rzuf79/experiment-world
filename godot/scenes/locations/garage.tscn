@@ -249,7 +249,7 @@ transform = Transform3D(3.41203, 0, 0, 0, 3.41203, 0, 0, 0, 3.41203, -0.508535, 
 transform = Transform3D(1.85116, 0, -0.723209, 0, 1.98742, 0, 0.723209, 0, 1.85116, 1.45147, 0, -2.08145)
 
 [node name="table" parent="Props" index="10" instance=ExtResource("9_wvdof")]
-transform = Transform3D(-1.40895e-07, 1.12425e-15, 3.22331, 1.12425e-15, 3.22331, -1.12425e-15, -3.22331, 1.12425e-15, -1.40895e-07, 4.5756, 0.00688249, 1.7933)
+transform = Transform3D(-1.14015e-07, 9.09765e-16, 2.60836, 9.09765e-16, 2.60836, -9.09765e-16, -2.60836, 9.09765e-16, -1.14015e-07, 4.5756, 0.00688249, 1.47947)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Props/table" index="1"]
 
