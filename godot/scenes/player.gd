@@ -50,14 +50,16 @@ func _input(event : InputEvent):
 		_look_dir = event.relative * 0.01
 	
 	if event.is_action_pressed("interact"):
-		if _hand_object:
-			_hand_object.set_snap_target(null)
-			_hand_object = null
-		else:
+		if !_hand_object:
 			var collider = _head_raycast.get_collider()
 			if collider && collider is Grabbable:
 				_hand_object = collider
 				_hand_object.set_snap_target(_hand_marker)
+	
+	if event.is_action_pressed("drop"):
+		if _hand_object:
+			_hand_object.set_snap_target(null)
+			_hand_object = null
 
 
 func _rotate_camera(delta : float, sensitivity_mod : float = 1.0):

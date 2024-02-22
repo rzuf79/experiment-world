@@ -3,9 +3,23 @@ extends RigidBody3D
 
 const SNAP_SPEED = 10.0
 
+@export var outline_material : Material
+
 var _snap_target : Marker3D = null
-var _previous_v_error := Vector3.ZERO
-var _v_error_integral := Vector3.ZERO
+var _outlines := []
+#var _previous_v_error := Vector3.ZERO
+#var _v_error_integral := Vector3.ZERO
+
+
+func _ready():
+	for child in get_children():
+		if child is MeshInstance3D:
+			var outline = MeshInstance3D.new()
+			outline.mesh = child.mesh.create_outline(0.02)
+			outline.mesh.surface_set_material(0, outline_material)
+			outline.visible = false
+			child.add_child(outline)
+			_outlines.append(outline)
 
 
 func set_snap_target(snap_target):
@@ -20,12 +34,12 @@ func _physics_process(delta):
 		# POSITION
 		var vec = _snap_target.global_position - global_position
 		var v = vec * SNAP_SPEED # velocity
-		var v_error = v - linear_velocity
-		var error_derivative = (v_error - _previous_v_error) / delta
-		_previous_v_error = v_error
 		
-		_v_error_integral += v_error * delta
-		var impulse = v_error + error_derivative + (_v_error_integral * 1)
+		#var v_error = v - linear_velocity
+		#var error_derivative = (v_error - _previous_v_error) / delta
+		#_previous_v_error = v_error
+		#_v_error_integral += v_error * delta
+		#var impulse = v_error + error_derivative + (_v_error_integral * 1)
 		
 		linear_velocity = v
 		
