@@ -49,12 +49,15 @@ size = Vector3(0.242188, 0.63501, 0.218994)
 [node name="HobbyKnife" instance=ExtResource("1_r73hr")]
 
 [node name="CollisionShape" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0134049, -0.0160674, 0.0047913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0134049, 0.0304816, 0.0047913)
 
 [node name="Hobby Knife" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(0.611755, 0, 0, 0, 0.611755, 0, 0, 0, 0.611755, 0.0128678, -0.100989, 0.00458509)
+transform = Transform3D(0.611755, 0, 0, 0, 0.611755, 0, 0, 0, 0.611755, 0.0128678, -0.05444, 0.00458509)
 mesh = SubResource("ArrayMesh_s6nlp")
 skeleton = NodePath("")
+
+[node name="PickArea" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.046549, 0)
 
 [node name="CollisionShape3D" parent="PickArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00390625, -0.00842285, -0.00427246)

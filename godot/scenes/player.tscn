@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_qfeeg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4kyxv"]
+radius = 0.25
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x51jf"]
+radius = 0.25
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53735, 1.21943, 6.56668)

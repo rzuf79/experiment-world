@@ -103,7 +103,6 @@ func _physics_process(delta):
 		if angle > PI:
 			qt = -qt
 			angle = TAU - angle
-		
 		if abs(angle) > 0.0001:
 			var axis = Vector3(qt.x, qt.y, qt.z) / sqrt(1-qt.w*qt.w)
 			var w = axis * angle
