@@ -1,18 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://0p28q1amfhfi"]
+[gd_scene load_steps=12 format=3 uid="uid://0p28q1amfhfi"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_hmsnr"]
 [ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="2_fwbji"]
 [ext_resource type="Script" path="res://scenes/objects/object_scissors.gd" id="2_pe1pl"]
-[ext_resource type="PackedScene" uid="uid://bvfxcbys0rlyv" path="res://scenes/objects/object_plastic_straw.tscn" id="3_81ad5"]
-[ext_resource type="PackedScene" uid="uid://7re1gi3l7ar8" path="res://scenes/objects/object_plastic_straw_cut.tscn" id="4_kkveh"]
-[ext_resource type="Script" path="res://code/object_interaction.gd" id="5_5bep3"]
-
-[sub_resource type="Resource" id="Resource_lhipt"]
-script = ExtResource("5_5bep3")
-other_object = ExtResource("3_81ad5")
-resulting_object = ExtResource("4_kkveh")
-two_way = false
-remove_self = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dtxvj"]
 size = Vector3(0.0742536, 0.807924, 0.0671196)
@@ -123,7 +113,6 @@ size = Vector3(0.492676, 0.913818, 0.411377)
 
 [node name="ObjectScissors" instance=ExtResource("1_hmsnr")]
 script = ExtResource("2_pe1pl")
-interactions = Array[ExtResource("5_5bep3")]([SubResource("Resource_lhipt")])
 
 [node name="CollisionShape" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000733159, 0.1221, 0.00683405)

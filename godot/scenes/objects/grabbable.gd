@@ -49,17 +49,20 @@ func remove():
 	queue_free()
 
 
-func on_use(with):
+func on_use(with, backwards = false):
 	if with is Grabbable:
 		var with_scene_path = with.scene_file_path
 		for inter in interactions:
-			if !inter.other_object || !inter.resulting_object:
+			if (inter.direction == ObjectInteraction.InteractionType.BACKWARDS) && !backwards:
 				continue
 			if with_scene_path == inter.other_object.resource_path:
-				var current_transform = with.global_transform
+				var current_transform = global_transform if backwards else with.global_transform
 				var parent = with.get_parent_node_3d()
 				var new_object = inter.resulting_object.instantiate()
-				with.remove()
+				if backwards:
+					remove()
+				else:
+					with.remove()
 				new_object.global_transform = current_transform
 				parent.add_child(new_object)
 				if new_object.spawn_particle != null:
@@ -68,6 +71,14 @@ func on_use(with):
 					spawn_particles.global_position = new_object.global_position
 					spawn_particles.emitting = true
 				break
+		
+		for inter in with.interactions:
+			if (inter.direction == ObjectInteraction.InteractionType.BOTH_WAYS \
+				|| inter.direction == ObjectInteraction.InteractionType.BACKWARDS) \
+				&& inter.other_object.resource_path == scene_file_path:
+				with.on_use(self, true)
+				break
+				
 
 
 func set_outline_enabled(value):
@@ -89,7 +100,7 @@ func set_raycast_exclude(raycast : RayCast3D, excluded : bool):
 			raycast.remove_exception(target)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if _snap_target:
 		# POSITION
 		var pos_snap_vec = _snap_target.global_position - global_position

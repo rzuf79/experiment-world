@@ -52,15 +52,17 @@ func _physics_process(delta):
 		_focused_object.disconnect("removed", _on_focused_object_removed)
 		_focused_object = null
 	if collider:
+		var current_focused_object = null
 		if collider is Grabbable:
-			_focused_object = collider
+			current_focused_object = collider
 		elif collider is Area3D && collider.is_in_group(Consts.GROUP_NAME_PICK_AREAS):
-			_focused_object = collider.get_parent()
+			current_focused_object = collider.get_parent()
 		
-		if _focused_object.is_removed:
-			_focused_object = null
+		if current_focused_object.is_removed:
+			current_focused_object = null
 		
-		if _focused_object:
+		if current_focused_object && current_focused_object != _focused_object:
+			_focused_object = current_focused_object
 			_focused_object.connect("removed", _on_focused_object_removed)
 			_focused_object.set_outline_enabled(true)
 

@@ -3,7 +3,7 @@ extends Grabbable
 @onready var _anim = $AnimationPlayer
 
 
-func on_use(with):
+func on_use(with, _backwards = false):
 	_anim.stop(false)
 	_anim.play("cut")
 	super.on_use(with)

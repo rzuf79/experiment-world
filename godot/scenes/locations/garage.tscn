@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://difx5rwgdqqnn"]
+[gd_scene load_steps=46 format=3 uid="uid://difx5rwgdqqnn"]
 
 [ext_resource type="PackedScene" uid="uid://dx6deyxv4obqq" path="res://scenes/locations/location_base.tscn" id="1_g6nrk"]
 [ext_resource type="Texture2D" uid="uid://ddbb87ruf4smf" path="res://gfx/crappy_textures/checkered_floor_128.png" id="2_n7lmm"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://0p28q1amfhfi" path="res://scenes/objects/object_scissors.tscn" id="16_a2m2l"]
 [ext_resource type="PackedScene" uid="uid://bvfxcbys0rlyv" path="res://scenes/objects/object_plastic_straw.tscn" id="16_pmvk2"]
 [ext_resource type="PackedScene" uid="uid://pu7dccoyfi8m" path="res://scenes/objects/object_balloon_deflated.tscn" id="17_db684"]
+[ext_resource type="PackedScene" uid="uid://bpko2nll4uacb" path="res://scenes/objects/object_plastic_bottle_cap.tscn" id="18_775jk"]
+[ext_resource type="PackedScene" uid="uid://diwvywiciqpxk" path="res://scenes/objects/object_plastic_bottle.tscn" id="19_eor8u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkjv7"]
 albedo_texture = ExtResource("2_n7lmm")
@@ -64,6 +66,12 @@ data = PackedVector3Array(-5, 2.5, 0.5, 5, 2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, 0.5,
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_er88v"]
 data = PackedVector3Array(-5, 2.5, 0.5, 5, 2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, 0.5, 5, -2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, -0.5, -5, 2.5, -0.5, 5, -2.5, -0.5, -5, 2.5, -0.5, -5, -2.5, -0.5, 5, -2.5, -0.5, 5, 2.5, 0.5, 5, 2.5, -0.5, 5, -2.5, 0.5, 5, 2.5, -0.5, 5, -2.5, -0.5, 5, -2.5, 0.5, -5, 2.5, -0.5, -5, 2.5, 0.5, -5, -2.5, -0.5, -5, 2.5, 0.5, -5, -2.5, 0.5, -5, -2.5, -0.5, 5, 2.5, 0.5, -5, 2.5, 0.5, 5, 2.5, -0.5, -5, 2.5, 0.5, -5, 2.5, -0.5, 5, 2.5, -0.5, -5, -2.5, 0.5, 5, -2.5, 0.5, -5, -2.5, -0.5, 5, -2.5, 0.5, 5, -2.5, -0.5, -5, -2.5, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78v6j"]
+size = Vector3(0.534515, 0.884888, 0.219604)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qc4s1"]
+size = Vector3(0.263321, 0.933594, 0.249756)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxg7n"]
 size = Vector3(0.841858, 0.326264, 0.44873)
@@ -246,8 +254,20 @@ transform = Transform3D(0.184117, 0, 3.07106, 0, 3.07657, 0, -3.07106, 0, 0.1841
 [node name="sideTableDrawers" parent="Props" index="8" instance=ExtResource("7_u1qs5")]
 transform = Transform3D(3.41203, 0, 0, 0, 3.41203, 0, 0, 0, 3.41203, -0.508535, 0, -3.41681)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/sideTableDrawers" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/sideTableDrawers/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257187, -0.0575561, -0.100525)
+shape = SubResource("BoxShape3D_78v6j")
+
 [node name="stoolBar" parent="Props" index="9" instance=ExtResource("8_rsbl0")]
 transform = Transform3D(1.85116, 0, -0.723209, 0, 1.98742, 0, 0.723209, 0, 1.85116, 1.45147, 0, -2.08145)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/stoolBar" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/stoolBar/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, -1.28865e-08, 0, 1, 0, -1.42083e-08, 0, 1, 0.127907, -0.0332033, -0.116799)
+shape = SubResource("BoxShape3D_qc4s1")
 
 [node name="table" parent="Props" index="10" instance=ExtResource("9_wvdof")]
 transform = Transform3D(-1.14015e-07, 9.09765e-16, 2.60836, 9.09765e-16, 2.60836, -9.09765e-16, -2.60836, 9.09765e-16, -1.14015e-07, 4.5756, 0.00688249, 1.47947)
@@ -282,28 +302,80 @@ transform = Transform3D(-1.87358, 6.53479e-16, -1.63793e-07, 6.53479e-16, 1.8735
 [node name="Objects" type="Node3D" parent="." index="2"]
 
 [node name="HobbyKnife" parent="Objects" index="0" instance=ExtResource("15_kbtgt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36207, 1.30181, -1.20725)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332656, 1.63521, -3.7642)
+angular_damp = 0.0
 
 [node name="ObjectScissors" parent="Objects" index="1" instance=ExtResource("16_a2m2l")]
 transform = Transform3D(0.659928, 0, 0, 0, 0.659928, 0, 0, 0, 0.659928, 3.86918, 1.57997, -0.212554)
+angular_damp = 0.0
 
 [node name="ObjectPlasticStraw" parent="Objects" index="2" instance=ExtResource("16_pmvk2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23857, 1.35561, 0.310726)
+angular_damp = 0.0
 
 [node name="ObjectPlasticStraw2" parent="Objects" index="3" instance=ExtResource("16_pmvk2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76539, 1.35561, 0.489831)
+angular_damp = 0.0
 
 [node name="ObjectPlasticStraw3" parent="Objects" index="4" instance=ExtResource("16_pmvk2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04048, 1.35561, 0.76637)
+angular_damp = 0.0
 
 [node name="ObjectPlasticStraw4" parent="Objects" index="5" instance=ExtResource("16_pmvk2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66346, 1.35561, 1.09457)
+angular_damp = 0.0
 
 [node name="ObjectPlasticStraw5" parent="Objects" index="6" instance=ExtResource("16_pmvk2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16812, 1.35561, 1.25962)
+angular_damp = 0.0
 
 [node name="ObjectBalloonDeflated" parent="Objects" index="7" instance=ExtResource("17_db684")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76899, 0, -1.72003)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottleCap" parent="Objects" index="8" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0574093, 1.40787, -3.72436)
+
+[node name="ObjectPlasticBottleCap2" parent="Objects" index="9" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287372, 1.40787, -3.89076)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottleCap3" parent="Objects" index="10" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.321678, 1.40787, -3.67465)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottleCap4" parent="Objects" index="11" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.516713, 1.40787, -3.78159)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottleCap5" parent="Objects" index="12" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.450304, 1.40787, -3.98281)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottleCap6" parent="Objects" index="13" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367977, 1.57547, -3.90276)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottleCap7" parent="Objects" index="14" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421406, 1.57547, -3.70226)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottleCap8" parent="Objects" index="15" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.216733, 1.57547, -3.73465)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottleCap9" parent="Objects" index="16" instance=ExtResource("18_775jk")]
+transform = Transform3D(1, 0, 0, 0, 0.814307, 0.580434, 0, -0.580434, 0.814307, 0.0497536, 1.37755, -3.87057)
+angular_damp = 0.0
+
+[node name="ObjectPlasticBottle" parent="Objects" index="17" instance=ExtResource("19_eor8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78059, 0.310547, 0.55205)
+
+[node name="ObjectPlasticBottle2" parent="Objects" index="18" instance=ExtResource("19_eor8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78059, 0.310547, 0.0792329)
+
+[node name="ObjectPlasticBottle3" parent="Objects" index="19" instance=ExtResource("19_eor8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49901, 0.310547, 0.30072)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, -3.06206e-16, 0.115402, 0.993319, -3.86707e-16, -0.993319, 0.115402, -1.41759, 6.74938, 11.162)
