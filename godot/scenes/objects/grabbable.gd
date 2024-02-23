@@ -92,10 +92,19 @@ func set_raycast_exclude(raycast : RayCast3D, excluded : bool):
 func _physics_process(delta):
 	if _snap_target:
 		# POSITION
-		var vec = _snap_target.global_position - global_position
-		linear_velocity = vec * SNAP_SPEED
+		var pos_snap_vec = _snap_target.global_position - global_position
+		linear_velocity = pos_snap_vec * SNAP_SPEED
 		
 		# ROTATION
-		angular_velocity = angular_velocity.lerp(Vector3.ZERO, delta * 10.0)
-		var target_quat = _snap_target.global_basis.get_rotation_quaternion()
-		quaternion = quaternion.slerp(target_quat, delta * 5.0)
+		var q1 = basis.get_rotation_quaternion()
+		var q2 = _snap_target.global_basis.get_rotation_quaternion()
+		var qt = q2 * q1.inverse()
+		var angle = 2 * acos(qt.w)
+		if angle > PI:
+			qt = -qt
+			angle = TAU - angle
+		
+		if abs(angle) > 0.0001:
+			var axis = Vector3(qt.x, qt.y, qt.z) / sqrt(1-qt.w*qt.w)
+			var w = axis * angle
+			angular_velocity = w * SNAP_SPEED
