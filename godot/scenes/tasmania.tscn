@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://44c2exn1xodi"]
+[gd_scene load_steps=15 format=3 uid="uid://44c2exn1xodi"]
 
 [ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="1_d6fp3"]
+[ext_resource type="PackedScene" uid="uid://eyr8t5v3nipw" path="res://scenes/objects/bottle_car/object_bottle_car_progress.tscn" id="2_v48to"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cixrb"]
 size = Vector3(30, 1, 10)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_viqba"]
-data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_jparj"]
+size = Vector3(30, 1, 10)
 
 [sub_resource type="SphereMesh" id="SphereMesh_rt47w"]
 
@@ -48,11 +49,11 @@ transform = Transform3D(0.998647, 0.0519943, 0, -0.0519944, 0.998648, 0, 0, 0, 1
 mesh = SubResource("BoxMesh_cixrb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-collision_layer = 9
+collision_layer = 15
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_viqba")
+shape = SubResource("BoxShape3D_jparj")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45427, 0)
@@ -129,3 +130,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49702, 1.79329, 2.93535)
 node_a = NodePath("../JointTest/Axle")
 node_b = NodePath("../JointTest/RigidBody3D2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49702, 1.79329, 2.93535)
+
+[node name="ObjectBottleCarProgress" parent="." instance=ExtResource("2_v48to")]
+transform = Transform3D(0.0581425, 0, 0.998308, 0, 1, 0, -0.998308, 0, 0.0581425, -5.16611, 3.10753, 4.68523)
