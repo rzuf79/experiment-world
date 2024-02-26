@@ -8,11 +8,14 @@
 
 [sub_resource type="Resource" id="Resource_vn0ve"]
 script = ExtResource("4_amg7n")
+disabled = false
 other_object = ExtResource("2_i0kfc")
 resulting_object = ExtResource("3_quwb5")
 direction = 2
 remove_self = true
 remove_other = false
+disable_interaction_after_use = true
+callable = ""
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0x50"]
 size = Vector3(0.0439397, 0.227368, 0.0331764)

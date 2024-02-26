@@ -61,7 +61,7 @@ func _physics_process(delta):
 		elif collider is Area3D && collider.is_in_group(Consts.GROUP_NAME_PICK_AREAS):
 			current_focused_object = collider.get_parent()
 		
-		if current_focused_object.is_removed:
+		if current_focused_object && current_focused_object.is_removed:
 			current_focused_object = null
 		
 		if current_focused_object && current_focused_object != _focused_object:

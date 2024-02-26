@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://44c2exn1xodi"]
+[gd_scene load_steps=14 format=3 uid="uid://44c2exn1xodi"]
+
+[ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="1_d6fp3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cixrb"]
-size = Vector3(10, 1, 10)
+size = Vector3(30, 1, 10)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_viqba"]
 data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
@@ -10,17 +12,43 @@ data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_71yyu"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pxnr4"]
+
+[sub_resource type="Sky" id="Sky_um7c3"]
+sky_material = SubResource("ProceduralSkyMaterial_pxnr4")
+
 [sub_resource type="Environment" id="Environment_k1x0i"]
+background_mode = 2
+sky = SubResource("Sky_um7c3")
 sdfgi_enabled = true
 glow_enabled = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sf17q"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k4r3e"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7miy"]
+albedo_texture = ExtResource("1_d6fp3")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m8an0"]
+material = SubResource("StandardMaterial3D_j7miy")
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6hwio"]
+height = 0.2
 
 [node name="Tasmania" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.998647, 0.0519943, 0, -0.0519944, 0.998648, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_cixrb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-collision_layer = 8
+collision_layer = 9
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
@@ -38,7 +66,7 @@ mesh = SubResource("SphereMesh_rt47w")
 shape = SubResource("SphereShape3D_71yyu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.834173, 0.551503, 0, -0.551503, 0.834173, 0, 4.47015, 8.15838)
+transform = Transform3D(1, 0, 0, 0, 0.830874, 0.556461, 0, -0.556461, 0.830874, -0.886638, 4.06401, 8.75272)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k1x0i")
@@ -46,3 +74,58 @@ environment = SubResource("Environment_k1x0i")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.29046, 0.956887, 0, -0.956887, 0.29046, 0, 6.08056, 8.95335)
 shadow_enabled = true
+
+[node name="JointTest" type="Node3D" parent="."]
+
+[node name="Axle" type="RigidBody3D" parent="JointTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51075, 1.77505, 2.54647)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="JointTest/Axle"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("CylinderMesh_sf17q")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JointTest/Axle"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_k4r3e")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="JointTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50249, 1.7791, 2.95357)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+angular_velocity = Vector3(8.36384e-14, 8.36384e-14, 1.74533)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="JointTest/RigidBody3D"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("CylinderMesh_m8an0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JointTest/RigidBody3D"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_6hwio")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="JointTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50249, 1.7791, 1.99901)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+angular_velocity = Vector3(8.36384e-14, 8.36384e-14, 1.74533)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="JointTest/RigidBody3D2"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("CylinderMesh_m8an0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JointTest/RigidBody3D2"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_6hwio")
+
+[node name="JoltPinJoint3D" type="JoltPinJoint3D" parent="."]
+node_a = NodePath("../JointTest/Axle")
+node_b = NodePath("../JointTest/RigidBody3D")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49702, 1.79329, 2.93535)
+
+[node name="JoltPinJoint3D2" type="JoltPinJoint3D" parent="."]
+node_a = NodePath("../JointTest/Axle")
+node_b = NodePath("../JointTest/RigidBody3D2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49702, 1.79329, 2.93535)

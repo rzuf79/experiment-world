@@ -21,15 +21,14 @@ var _outlines := []
 
 
 func _ready():
-	for child in get_children():
-		if child is MeshInstance3D:
-			_meshes.append(child)
-			var outline = MeshInstance3D.new()
-			outline.mesh = child.mesh.create_outline(0.02)
-			outline.mesh.surface_set_material(0, outline_material)
-			outline.visible = false
-			child.add_child(outline)
-			_outlines.append(outline)
+	for child in find_children("", "MeshInstance3D", true):
+		_meshes.append(child)
+		var outline = MeshInstance3D.new()
+		outline.mesh = child.mesh.create_outline(0.02)
+		outline.mesh.surface_set_material(0, outline_material)
+		outline.visible = false
+		child.add_child(outline)
+		_outlines.append(outline)
 	
 	var pick_shape : CollisionShape3D = $PickArea/CollisionShape3D
 	if pick_shape.shape == null:
