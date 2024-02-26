@@ -8,7 +8,7 @@ height = 0.0855321
 radius = 0.0652358
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7o5k"]
-size = Vector3(0.476562, 0.624298, 0.521851)
+size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3pwp"]
 resource_name = "Material"

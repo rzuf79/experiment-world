@@ -252,7 +252,7 @@ transform = Transform3D(3.02489, 0, -0.561526, 0, 3.07657, 0, 0.561527, 0, 3.024
 transform = Transform3D(0.184117, 0, 3.07106, 0, 3.07657, 0, -3.07106, 0, 0.184117, -2.28606, 0, 2.59452)
 
 [node name="sideTableDrawers" parent="Props" index="8" instance=ExtResource("7_u1qs5")]
-transform = Transform3D(3.41203, 0, 0, 0, 3.41203, 0, 0, 0, 3.41203, -0.508535, 0, -3.41681)
+transform = Transform3D(2.46763, 0, 0, 0, 2.46763, 0, 0, 0, 2.46763, -0.508535, 0, -4.33703)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Props/sideTableDrawers" index="1"]
 
@@ -302,7 +302,7 @@ transform = Transform3D(-1.87358, 6.53479e-16, -1.63793e-07, 6.53479e-16, 1.8735
 [node name="Objects" type="Node3D" parent="." index="2"]
 
 [node name="HobbyKnife" parent="Objects" index="0" instance=ExtResource("15_kbtgt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332656, 1.63521, -3.7642)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332656, 1.24887, -4.50688)
 angular_damp = 0.0
 
 [node name="ObjectScissors" parent="Objects" index="1" instance=ExtResource("16_a2m2l")]
@@ -334,38 +334,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76899, 0, -1.72003)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottleCap" parent="Objects" index="8" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0574093, 1.40787, -3.72436)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0574093, 1.02152, -4.46704)
 
 [node name="ObjectPlasticBottleCap2" parent="Objects" index="9" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287372, 1.40787, -3.89076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287372, 1.02152, -4.63343)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottleCap3" parent="Objects" index="10" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.321678, 1.40787, -3.67465)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.321678, 1.02152, -4.41733)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottleCap4" parent="Objects" index="11" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.516713, 1.40787, -3.78159)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.516713, 1.02152, -4.52427)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottleCap5" parent="Objects" index="12" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.450304, 1.40787, -3.98281)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.450304, 1.02152, -4.72548)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottleCap6" parent="Objects" index="13" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367977, 1.57547, -3.90276)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367977, 1.18913, -4.64544)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottleCap7" parent="Objects" index="14" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421406, 1.57547, -3.70226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421406, 1.18913, -4.44494)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottleCap8" parent="Objects" index="15" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.216733, 1.57547, -3.73465)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.216733, 1.18913, -4.47733)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottleCap9" parent="Objects" index="16" instance=ExtResource("18_775jk")]
-transform = Transform3D(1, 0, 0, 0, 0.814307, 0.580434, 0, -0.580434, 0.814307, 0.0497536, 1.37755, -3.87057)
+transform = Transform3D(1, 0, 0, 0, 0.814307, 0.580434, 0, -0.580434, 0.814307, 0.0497536, 0.991201, -4.61325)
 angular_damp = 0.0
 
 [node name="ObjectPlasticBottle" parent="Objects" index="17" instance=ExtResource("19_eor8u")]
