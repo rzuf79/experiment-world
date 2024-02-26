@@ -8,6 +8,7 @@ signal removed()
 @export var outline_material : Material
 @export var interactions : Array[ObjectInteraction]
 @export var spawn_particle : PackedScene
+@export var on_use_anim_name : String = ""
 
 @onready var _pick_area = $PickArea
 
@@ -50,6 +51,13 @@ func remove():
 
 
 func on_use(with, backwards = false):
+	
+	if !on_use_anim_name.is_empty():
+		for child in get_children():
+			if child is AnimationPlayer:
+				child.stop(false)
+				child.play(on_use_anim_name)
+	
 	if with is Grabbable:
 		var with_scene_path = with.scene_file_path
 		for inter in interactions:
