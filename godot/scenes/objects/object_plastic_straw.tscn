@@ -59,6 +59,7 @@ shadow_mesh = SubResource("ArrayMesh_jwj3f")
 size = Vector3(0.570744, 0.708496, 0.126495)
 
 [node name="ObjectPlasticStraw" instance=ExtResource("1_vfqbd")]
+display_name = "Plastic straw"
 interactions = Array[ExtResource("4_amg7n")]([SubResource("Resource_vn0ve")])
 
 [node name="CollisionShape" parent="." index="0"]

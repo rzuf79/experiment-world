@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://v7fbh5m8tg5o"]
+[gd_scene load_steps=5 format=3 uid="uid://v7fbh5m8tg5o"]
 
 [ext_resource type="Texture2D" uid="uid://5m37a8uubpua" path="res://gfx/misc/circle_8.png" id="1_ddcuy"]
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_e1x52"]
+[ext_resource type="FontFile" uid="uid://bjv07xbkdsfat" path="res://fonts/exo2.ttf" id="2_qmd7t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j045a"]
+font = ExtResource("2_qmd7t")
+font_size = 50
+outline_size = 20
+outline_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -9,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e1x52")
 
 [node name="Cursor" type="TextureRect" parent="."]
 layout_mode = 1
@@ -25,3 +34,17 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ddcuy")
 stretch_mode = 3
+
+[node name="LabelFocusedObject" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -336.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 77.0
+grow_horizontal = 2
+text = "Bottle cap"
+label_settings = SubResource("LabelSettings_j045a")
+horizontal_alignment = 1

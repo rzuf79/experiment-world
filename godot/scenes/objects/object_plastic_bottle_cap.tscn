@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpko2nll4uacb"]
+[gd_scene load_steps=11 format=3 uid="uid://bpko2nll4uacb"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_xxke3"]
 [ext_resource type="PackedScene" uid="uid://byuwyeetqgep3" path="res://scenes/objects/object_hobby_knife.tscn" id="2_kb010"]
@@ -16,9 +16,6 @@ remove_self = false
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mt57h"]
 height = 0.0855321
 radius = 0.0652358
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sw1q6"]
-size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3pwp"]
 resource_name = "Material"
@@ -62,6 +59,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ooj5r")
 
 [node name="ObjectPlasticBottleCap" instance=ExtResource("1_xxke3")]
+display_name = "Bottle cap"
 interactions = Array[ExtResource("4_mdyy4")]([SubResource("Resource_eb65q")])
 
 [node name="CollisionShape" parent="." index="0"]
@@ -69,7 +67,6 @@ shape = SubResource("CylinderShape3D_mt57h")
 
 [node name="CollisionShape3D" parent="PickArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.00256348, -0.00561523)
-shape = SubResource("BoxShape3D_sw1q6")
 
 [node name="PlasticBottleCap" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)

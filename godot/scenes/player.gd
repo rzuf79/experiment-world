@@ -5,6 +5,8 @@ const RUN_SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_SENSITIVITY = 50.0
 
+signal focused_object_changed(object)
+
 @onready var _camera = $Camera3D
 @onready var _mesh = $MeshInstance3D
 @onready var _head_raycast = $Camera3D/RayCast3D
@@ -51,6 +53,7 @@ func _physics_process(delta):
 		_focused_object.set_outline_enabled(false)
 		_focused_object.disconnect("removed", _on_focused_object_removed)
 		_focused_object = null
+		emit_signal("focused_object_changed", null)
 	if collider:
 		var current_focused_object = null
 		if collider is Grabbable:
@@ -65,6 +68,7 @@ func _physics_process(delta):
 			_focused_object = current_focused_object
 			_focused_object.connect("removed", _on_focused_object_removed)
 			_focused_object.set_outline_enabled(true)
+			emit_signal("focused_object_changed", _focused_object)
 
 
 func _input(event : InputEvent):

@@ -57,6 +57,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rju6p")
 
 [node name="ObjectBalloonDeflated" instance=ExtResource("1_x0h8s")]
+display_name = "Balloon"
 
 [node name="CollisionShape" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.817665, -0.575695, 0, 0.575695, 0.817665, 0.00248188, 0.257628, 0.125258)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgdcwakpayxrj"]
+[gd_scene load_steps=7 format=3 uid="uid://cgdcwakpayxrj"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_wwe4v"]
 [ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="2_kfpba"]
@@ -6,9 +6,6 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q0yxc"]
 height = 0.0855321
 radius = 0.0652358
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i7o5k"]
-size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3pwp"]
 resource_name = "Material"
@@ -52,13 +49,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a5fnl")
 
 [node name="ObjectPlasticBottleCapHole" instance=ExtResource("1_wwe4v")]
+display_name = "Bottle cap (hole)"
 
 [node name="CollisionShape" parent="." index="0"]
 shape = SubResource("CylinderShape3D_q0yxc")
 
 [node name="CollisionShape3D" parent="PickArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00488281, 0.00508118, -0.00518799)
-shape = SubResource("BoxShape3D_i7o5k")
 
 [node name="PlasticBottleCapHole" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)

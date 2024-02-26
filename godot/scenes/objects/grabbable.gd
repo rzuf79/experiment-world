@@ -5,6 +5,7 @@ const SNAP_SPEED = 10.0
 
 signal removed()
 
+@export var display_name : String = "Unnamed Object"
 @export var outline_material : Material
 @export var interactions : Array[ObjectInteraction]
 @export var spawn_particle : PackedScene

@@ -81,6 +81,7 @@ _data = {
 }
 
 [node name="HobbyKnife" instance=ExtResource("1_r73hr")]
+display_name = "Hobby knife"
 on_use_anim_name = "stab"
 
 [node name="CollisionShape" parent="." index="0"]

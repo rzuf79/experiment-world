@@ -52,6 +52,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yk04u")
 
 [node name="ObjectPlasticBottle" instance=ExtResource("1_wf7cr")]
+display_name = "Plastic bottle"
 
 [node name="CollisionShape" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00055119, 0.0330876, -0.00236464)

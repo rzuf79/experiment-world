@@ -1,8 +1,11 @@
 extends Node3D
 
 
+@onready var _player = $Player
+@onready var _hud = $CanvasLayer/HUD
+
 func _ready():
-	pass
+	_player.connect("focused_object_changed", _hud.set_focused_object)
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 

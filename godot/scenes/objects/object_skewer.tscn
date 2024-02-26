@@ -49,6 +49,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c8eh1")
 
 [node name="ObjectSkewer" instance=ExtResource("1_87t4e")]
+display_name = "Skewer"
 
 [node name="CollisionShape" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29099e-05, 0.0268349, 1.57338e-05)
