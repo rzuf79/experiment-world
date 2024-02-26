@@ -111,6 +111,7 @@ _data = {
 size = Vector3(0.492676, 0.913818, 0.411377)
 
 [node name="ObjectScissors" instance=ExtResource("1_hmsnr")]
+display_name = "Scissors"
 on_use_anim_name = "cut"
 
 [node name="CollisionShape" parent="." index="0"]

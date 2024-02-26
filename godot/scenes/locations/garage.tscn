@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://difx5rwgdqqnn"]
+[gd_scene load_steps=47 format=3 uid="uid://difx5rwgdqqnn"]
 
 [ext_resource type="PackedScene" uid="uid://dx6deyxv4obqq" path="res://scenes/locations/location_base.tscn" id="1_g6nrk"]
 [ext_resource type="Texture2D" uid="uid://ddbb87ruf4smf" path="res://gfx/crappy_textures/checkered_floor_128.png" id="2_n7lmm"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://pu7dccoyfi8m" path="res://scenes/objects/object_balloon_deflated.tscn" id="17_db684"]
 [ext_resource type="PackedScene" uid="uid://bpko2nll4uacb" path="res://scenes/objects/object_plastic_bottle_cap.tscn" id="18_775jk"]
 [ext_resource type="PackedScene" uid="uid://diwvywiciqpxk" path="res://scenes/objects/object_plastic_bottle.tscn" id="19_eor8u"]
+[ext_resource type="PackedScene" uid="uid://cbfmkjld26y4e" path="res://scenes/objects/object_skewer.tscn" id="21_l1of3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkjv7"]
 albedo_texture = ExtResource("2_n7lmm")
@@ -405,3 +406,27 @@ lifetime = 3.0
 randomness = 0.75
 process_material = SubResource("ParticleProcessMaterial_cxji5")
 draw_pass_1 = SubResource("QuadMesh_b2eb7")
+
+[node name="ObjectSkewer" parent="." index="7" instance=ExtResource("21_l1of3")]
+transform = Transform3D(1, 0, 0, 0, 0.0128051, 0.999918, 0, -0.999918, 0.0128051, -0.915447, 0.0579332, -2.68873)
+
+[node name="ObjectSkewer2" parent="." index="8" instance=ExtResource("21_l1of3")]
+transform = Transform3D(0.955613, 0.2946, -0.0037727, -9.68423e-19, 0.0128051, 0.999918, 0.294624, -0.955535, 0.0122367, -1.09394, 0.0579332, -2.68873)
+
+[node name="ObjectSkewer3" parent="." index="9" instance=ExtResource("21_l1of3")]
+transform = Transform3D(-0.190985, 0.981512, -0.0125694, 9.52784e-11, 0.0128051, 0.999918, 0.981593, 0.19097, -0.00244559, -0.992148, 0.159608, -2.80837)
+
+[node name="ObjectSkewer4" parent="." index="10" instance=ExtResource("21_l1of3")]
+transform = Transform3D(-0.00651172, 0.999897, -0.0128049, -3.65157e-10, 0.0128051, 0.999918, 0.999979, 0.00651124, -8.33831e-05, -1.02101, 0.159608, -2.56221)
+
+[node name="ObjectSkewer5" parent="." index="11" instance=ExtResource("21_l1of3")]
+transform = Transform3D(0.989395, 0.145237, -0.00185993, -3.68529e-10, 0.0128051, 0.999918, 0.145249, -0.989314, 0.0126693, -1.09261, 0.159608, -2.70371)
+
+[node name="ObjectSkewer6" parent="." index="12" instance=ExtResource("21_l1of3")]
+transform = Transform3D(0.999636, 0.026986, -0.000345586, -2.55117e-10, 0.0128051, 0.999918, 0.0269882, -0.999554, 0.0128005, -0.901901, 0.159608, -2.70371)
+
+[node name="ObjectSkewer7" parent="." index="13" instance=ExtResource("21_l1of3")]
+transform = Transform3D(-0.0712241, -0.997379, 0.0127726, -2.57184e-10, 0.0128051, 0.999918, -0.99746, 0.0712183, -0.000912035, -0.985987, 0.201564, -2.84482)
+
+[node name="ObjectSkewer8" parent="." index="14" instance=ExtResource("21_l1of3")]
+transform = Transform3D(0.210694, -0.977472, 0.0125177, -2.66232e-10, 0.0128051, 0.999918, -0.977552, -0.210676, 0.00269796, -0.985987, 0.201564, -2.57473)
