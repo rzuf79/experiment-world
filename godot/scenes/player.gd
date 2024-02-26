@@ -89,12 +89,14 @@ func _input(event : InputEvent):
 func grab(object : Grabbable):
 	drop() # if any
 	_hand_object = object
+	_hand_object.connect("removed", _on_hand_object_removed)
 	_hand_object.set_snap_target(_hand_marker)
 	_hand_object.set_raycast_exclude(_head_raycast, true)
 
 
 func drop():
 	if _hand_object:
+		_hand_object.disconnect("removed", _on_hand_object_removed)
 		_hand_object.set_snap_target(null)
 		_hand_object.set_raycast_exclude(_head_raycast, false)
 		_hand_object = null
@@ -111,3 +113,7 @@ func _rotate_camera(delta : float, sensitivity_mod : float = 1.0):
 
 func _on_focused_object_removed():
 	_focused_object = null
+
+
+func _on_hand_object_removed():
+	_hand_object = null

@@ -1,17 +1,18 @@
 [gd_scene load_steps=12 format=3 uid="uid://cbfmkjld26y4e"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_87t4e"]
-[ext_resource type="PackedScene" uid="uid://7re1gi3l7ar8" path="res://scenes/objects/object_plastic_straw_cut.tscn" id="2_765r1"]
 [ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="2_pcemb"]
-[ext_resource type="PackedScene" uid="uid://b55r2pptdo34k" path="res://scenes/objects/axle/object_tireless_axle.tscn" id="3_gqio8"]
-[ext_resource type="Script" path="res://code/object_interaction.gd" id="4_1286b"]
+[ext_resource type="PackedScene" uid="uid://7re1gi3l7ar8" path="res://scenes/objects/object_plastic_straw_cut.tscn" id="2_uk45v"]
+[ext_resource type="PackedScene" uid="uid://de020iyux0x6v" path="res://scenes/objects/axle/object_tireless_axle.tscn" id="3_b3jhs"]
+[ext_resource type="Script" path="res://code/object_interaction.gd" id="4_hgq1m"]
 
-[sub_resource type="Resource" id="Resource_7dc0d"]
-script = ExtResource("4_1286b")
-other_object = ExtResource("2_765r1")
-resulting_object = ExtResource("3_gqio8")
+[sub_resource type="Resource" id="Resource_djflv"]
+script = ExtResource("4_hgq1m")
+other_object = ExtResource("2_uk45v")
+resulting_object = ExtResource("3_b3jhs")
 direction = 1
 remove_self = true
+remove_other = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41jaj"]
 size = Vector3(0.0222405, 0.631633, 0.0263987)
@@ -60,7 +61,7 @@ shadow_mesh = SubResource("ArrayMesh_c8eh1")
 
 [node name="ObjectSkewer" instance=ExtResource("1_87t4e")]
 display_name = "Skewer"
-interactions = Array[ExtResource("4_1286b")]([SubResource("Resource_7dc0d")])
+interactions = Array[ExtResource("4_hgq1m")]([SubResource("Resource_djflv")])
 
 [node name="CollisionShape" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29099e-05, 0.0268349, 1.57338e-05)

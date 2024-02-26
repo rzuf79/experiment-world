@@ -67,11 +67,17 @@ func on_use(with, backwards = false):
 			if with_scene_path == inter.other_object.resource_path:
 				var current_transform = global_transform if backwards else with.global_transform
 				var parent = with.get_parent_node_3d()
-				var new_object = inter.resulting_object.instantiate()
-				if backwards:
+				var new_object = inter.resulting_object.instantiate()	
+				
+				if inter.remove_self && inter.remove_other:
 					remove()
-				else:
 					with.remove()
+				elif inter.remove_self:
+					if backwards:
+						remove()
+					else:
+						with.remove()
+				
 				new_object.global_transform = current_transform
 				parent.add_child(new_object)
 				if new_object.spawn_particle != null:

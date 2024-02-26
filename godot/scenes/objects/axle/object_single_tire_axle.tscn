@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci6tykrx74r0u"]
+
+[ext_resource type="PackedScene" uid="uid://d0si3jv0junxa" path="res://scenes/objects/axle/object_axle.tscn" id="1_qqlw6"]
+[ext_resource type="PackedScene" uid="uid://cgdcwakpayxrj" path="res://scenes/objects/object_plastic_bottle_cap_hole.tscn" id="2_wyvgo"]
+[ext_resource type="Script" path="res://code/object_interaction.gd" id="3_j8s26"]
+
+[sub_resource type="Resource" id="Resource_i3y43"]
+script = ExtResource("3_j8s26")
+other_object = ExtResource("2_wyvgo")
+resulting_object = ExtResource("1_qqlw6")
+direction = 1
+remove_self = true
+remove_other = true
+
+[node name="ObjectSingleTireAxle" instance=ExtResource("1_qqlw6")]
+display_name = "Single-tire axle"
+interactions = Array[ExtResource("3_j8s26")]([SubResource("Resource_i3y43")])
+
+[node name="Cap2" parent="." index="5"]
+visible = false
+
+[node name="CollisionShapeCap2" parent="." index="7"]
+visible = false
+disabled = true

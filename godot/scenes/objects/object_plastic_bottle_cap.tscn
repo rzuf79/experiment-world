@@ -11,7 +11,8 @@ script = ExtResource("4_mdyy4")
 other_object = ExtResource("2_kb010")
 resulting_object = ExtResource("3_qisb3")
 direction = 2
-remove_self = false
+remove_self = true
+remove_other = false
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mt57h"]
 height = 0.0855321
