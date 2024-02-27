@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://difx5rwgdqqnn"]
+[gd_scene load_steps=47 format=3 uid="uid://difx5rwgdqqnn"]
 
 [ext_resource type="PackedScene" uid="uid://dx6deyxv4obqq" path="res://scenes/locations/location_base.tscn" id="1_g6nrk"]
 [ext_resource type="Texture2D" uid="uid://ddbb87ruf4smf" path="res://gfx/crappy_textures/checkered_floor_128.png" id="2_n7lmm"]
@@ -19,10 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bvfxcbys0rlyv" path="res://scenes/objects/object_plastic_straw.tscn" id="16_pmvk2"]
 [ext_resource type="PackedScene" uid="uid://pu7dccoyfi8m" path="res://scenes/objects/object_balloon_deflated.tscn" id="17_db684"]
 [ext_resource type="PackedScene" uid="uid://bpko2nll4uacb" path="res://scenes/objects/object_plastic_bottle_cap.tscn" id="18_775jk"]
-[ext_resource type="PackedScene" uid="uid://diwvywiciqpxk" path="res://scenes/objects/object_plastic_bottle.tscn" id="19_eor8u"]
 [ext_resource type="PackedScene" uid="uid://eyr8t5v3nipw" path="res://scenes/objects/bottle_car/object_bottle_car_progress.tscn" id="20_m7vi8"]
 [ext_resource type="PackedScene" uid="uid://cbfmkjld26y4e" path="res://scenes/objects/object_skewer.tscn" id="21_l1of3"]
-[ext_resource type="PackedScene" uid="uid://dvdnnbvk36mx" path="res://scenes/objects/bottle_car/bottle_car_axle.tscn" id="21_pib5q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkjv7"]
 albedo_texture = ExtResource("2_n7lmm")
@@ -371,20 +369,14 @@ angular_damp = 0.0
 transform = Transform3D(1, 0, 0, 0, 0.814307, 0.580434, 0, -0.580434, 0.814307, 0.0497536, 0.991201, -4.61325)
 angular_damp = 0.0
 
-[node name="ObjectPlasticBottle" parent="Objects" index="17" instance=ExtResource("19_eor8u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78059, 0.310547, 0.55205)
+[node name="ObjectBottleCarProgress" parent="Objects" index="17" instance=ExtResource("20_m7vi8")]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, -2.56513, 0.297032, 1.0474)
 
-[node name="ObjectPlasticBottle2" parent="Objects" index="18" instance=ExtResource("19_eor8u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78059, 0.310547, 0.0792329)
+[node name="ObjectBottleCarProgress2" parent="Objects" index="18" instance=ExtResource("20_m7vi8")]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, -2.56513, 0.297032, 0.730361)
 
-[node name="ObjectPlasticBottle3" parent="Objects" index="19" instance=ExtResource("19_eor8u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49901, 0.310547, 0.30072)
-
-[node name="ObjectBottleCarProgress" parent="Objects" index="20" instance=ExtResource("20_m7vi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39462, 0.310188, 2.4078)
-
-[node name="BottleCarAxle" parent="Objects" index="21" instance=ExtResource("21_pib5q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406155, 2.16988)
+[node name="ObjectBottleCarProgress3" parent="Objects" index="19" instance=ExtResource("20_m7vi8")]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, -2.56513, 0.95805, 0.869794)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, -3.06206e-16, 0.115402, 0.993319, -3.86707e-16, -0.993319, 0.115402, -1.41759, 6.74938, 11.162)
