@@ -388,6 +388,7 @@ shadow_blur = 2.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00193, 2.23762, 4.30702)
+visible = false
 light_color = Color(0.94902, 0.835294, 0.713726, 1)
 shadow_enabled = true
 shadow_blur = 4.06
@@ -395,6 +396,7 @@ omni_range = 20.923
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79634, 2.23762, 4.30702)
+visible = false
 light_color = Color(0.94902, 0.835294, 0.713726, 1)
 shadow_blur = 4.06
 omni_range = 20.923

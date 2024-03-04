@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://v7fbh5m8tg5o"]
+[gd_scene load_steps=6 format=3 uid="uid://v7fbh5m8tg5o"]
 
 [ext_resource type="Texture2D" uid="uid://5m37a8uubpua" path="res://gfx/misc/circle_8.png" id="1_ddcuy"]
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_e1x52"]
@@ -9,6 +9,12 @@ font = ExtResource("2_qmd7t")
 font_size = 50
 outline_size = 20
 outline_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7lek2"]
+font = ExtResource("2_qmd7t")
+font_size = 40
+outline_size = 15
+outline_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -45,6 +51,14 @@ offset_top = 16.0
 offset_right = 336.0
 offset_bottom = 77.0
 grow_horizontal = 2
-text = "Bottle cap"
 label_settings = SubResource("LabelSettings_j045a")
 horizontal_alignment = 1
+
+[node name="LabelFPS" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 257.0
+offset_bottom = 63.0
+text = "FPS"
+label_settings = SubResource("LabelSettings_7lek2")
