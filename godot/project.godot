@@ -80,3 +80,7 @@ drop={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
+
+[rendering]
+
+scaling_3d/scale=0.5
