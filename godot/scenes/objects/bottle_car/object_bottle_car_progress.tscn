@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://eyr8t5v3nipw"]
+[gd_scene load_steps=36 format=3 uid="uid://eyr8t5v3nipw"]
 
 [ext_resource type="PackedScene" uid="uid://dcrq3aar4c1ou" path="res://scenes/objects/grabbable.tscn" id="1_cerci"]
 [ext_resource type="Texture2D" uid="uid://b6wyrv1bgdnh8" path="res://3d/diy_objects/diy_objects_color.png" id="2_f4xn4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bvfxcbys0rlyv" path="res://scenes/objects/object_plastic_straw.tscn" id="4_bycnl"]
 [ext_resource type="PackedScene" uid="uid://pu7dccoyfi8m" path="res://scenes/objects/object_balloon_deflated.tscn" id="5_g4f1c"]
 [ext_resource type="Script" path="res://code/object_interaction.gd" id="6_mvd8m"]
+[ext_resource type="PackedScene" uid="uid://b7s32t0qblqt4" path="res://scenes/utils/parent_shaker_3d.tscn" id="8_emnhg"]
 
 [sub_resource type="Resource" id="Resource_ymhh7"]
 script = ExtResource("6_mvd8m")
@@ -377,6 +378,32 @@ _data = {
 "inflate": SubResource("Animation_5joex")
 }
 
+[sub_resource type="Curve" id="Curve_7a8fo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.138254, 1), 0.0, 0.0, 0, 0, Vector2(0.429314, 0.737752), 0.0, 0.0, 0, 0, Vector2(0.653846, 0.831412), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_ta87g"]
+curve = SubResource("Curve_7a8fo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ww53n"]
+direction = Vector3(4.79213e-12, 1, 0.5)
+flatness = 1.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(4.79213e-12, 4.79213e-12, 4.79213e-12)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_ta87g")
+turbulence_enabled = true
+turbulence_noise_strength = 0.2
+turbulence_noise_scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ei4g2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cdrcu"]
+material = SubResource("StandardMaterial3D_ei4g2")
+radius = 0.05
+height = 0.1
+
 [node name="ObjectBottleCarProgress" instance=ExtResource("1_cerci")]
 script = ExtResource("2_i1431")
 axle_scene = ExtResource("3_jlwdl")
@@ -393,6 +420,8 @@ shape = SubResource("CylinderShape3D_1jqsy")
 transform = Transform3D(0.924978, -3.27858e-09, -0.380021, -0.380021, -1.63557e-08, -0.924978, -3.18289e-09, 1, -1.63746e-08, 0, 0, -0.0666813)
 mesh = SubResource("ArrayMesh_x5vs0")
 skeleton = NodePath("")
+
+[node name="ParentShaker3D" parent="Bottle" index="0" instance=ExtResource("8_emnhg")]
 
 [node name="RigidBodyAxle1" type="RigidBody3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.14, 0.134)
@@ -476,6 +505,8 @@ visible = false
 mesh = SubResource("ArrayMesh_omwqi")
 skeleton = NodePath("")
 
+[node name="ParentShaker3D" parent="PlasticStraw" index="0" instance=ExtResource("8_emnhg")]
+
 [node name="BalloonAnim" type="Node3D" parent="." index="6"]
 transform = Transform3D(0.343565, -1.19831e-16, 1.19831e-16, 1.19831e-16, 0.343565, -1.19831e-16, -1.19831e-16, 1.19831e-16, 0.343565, 0, 0.17004, -0.184005)
 visible = false
@@ -530,5 +561,14 @@ libraries = {
 
 [node name="Exhaust" type="Marker3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.428753)
+
+[node name="ExhaustParticles" type="GPUParticles3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.44572)
+emitting = false
+amount = 10
+lifetime = 0.74
+randomness = 0.3
+process_material = SubResource("ParticleProcessMaterial_ww53n")
+draw_pass_1 = SubResource("SphereMesh_cdrcu")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

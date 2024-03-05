@@ -15,6 +15,9 @@ const ANIM_NAME_DEFLATE = "deflate"
 @onready var _balloon = $BalloonAnim
 
 @onready var _exhaust = $Exhaust
+@onready var _exhaust_particles = $ExhaustParticles
+@onready var _bottle_shaker = $Bottle/ParentShaker3D
+@onready var _straw_shaker = $PlasticStraw/ParentShaker3D
 @onready var _balloon_anim = $AnimationPlayer
 @onready var _pieces = [ _axle1, _axle2, _straw, _balloon ]
 
@@ -53,10 +56,17 @@ func on_use(with, backwards = false):
 		with.remove()
 
 
+func _process(_delta):
+	var rolling = _is_rolling()
+	_exhaust_particles.emitting = rolling
+	_bottle_shaker.shaking = rolling
+	_straw_shaker.shaking = rolling
+
+
 func _physics_process(delta):
 	super._physics_process(delta)
-	if _balloon_anim.is_playing() && _balloon_anim.current_animation == ANIM_NAME_DEFLATE:
-		apply_force(Vector3.FORWARD, _exhaust.position)
+	if _is_rolling():
+		apply_force(-transform.basis.z * 10, _exhaust.position)
 
 
 func _get_display_name():
@@ -64,6 +74,10 @@ func _get_display_name():
 		STATE_PROGRESS: return "Bottle car (unfinished)"
 		STATE_FINISHED: return "Bottle car"
 	return "Bottle"
+
+
+func _is_rolling():
+	return _balloon_anim.is_playing() && _balloon_anim.current_animation == ANIM_NAME_DEFLATE
 
 
 func _get_state():
