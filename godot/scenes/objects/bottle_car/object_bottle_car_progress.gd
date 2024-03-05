@@ -16,19 +16,26 @@ func on_use(with, backwards = false):
 		return
 	
 	var with_path = with.scene_file_path
+	var interacted = false
 	match with_path:
 		axle_scene.resource_path:
 			if !_axle1.visible:
 				_set_rigidbody_enabled(_axle1, true)
+				interacted = true
 			elif !_axle2.visible:
 				_set_rigidbody_enabled(_axle2, true)
+				interacted = true
 		straw_scene.resource_path:
 			if !_straw.visible:
 				_straw.visible = true
+				interacted = true
 		balloon_scene.resource_path:
-			if !_balloon.visible:
+			if !_balloon.visible && _straw.visible:
 				_balloon.visible = true
-	with.remove()
+				interacted = true
+	
+	if interacted:
+		with.remove()
 
 
 func _get_display_name():
