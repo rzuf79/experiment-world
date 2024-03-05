@@ -1,5 +1,10 @@
 extends Grabbable
 
+enum { STATE_NONE, STATE_PROGRESS, STATE_FINISHED }
+
+const ANIM_NAME_INFLATE = "inflate"
+const ANIM_NAME_DEFLATE = "deflate"
+
 @export var axle_scene : PackedScene
 @export var straw_scene : PackedScene
 @export var balloon_scene : PackedScene
@@ -9,8 +14,18 @@ extends Grabbable
 @onready var _straw = $PlasticStraw
 @onready var _balloon = $BalloonAnim
 
+@onready var _exhaust = $Exhaust
+@onready var _balloon_anim = $AnimationPlayer
+@onready var _pieces = [ _axle1, _axle2, _straw, _balloon ]
+
 
 func on_use(with, backwards = false):
+	if _get_state() == STATE_FINISHED:
+		emit_signal("request_drop")
+		_balloon_anim.play(ANIM_NAME_INFLATE)
+		
+		return
+	
 	super.on_use(with, backwards)
 	if with == null:
 		return
@@ -38,5 +53,31 @@ func on_use(with, backwards = false):
 		with.remove()
 
 
+func _physics_process(delta):
+	super._physics_process(delta)
+	if _balloon_anim.is_playing() && _balloon_anim.current_animation == ANIM_NAME_DEFLATE:
+		apply_force(Vector3.FORWARD, _exhaust.position)
+
+
 func _get_display_name():
+	match _get_state():
+		STATE_PROGRESS: return "Bottle car (unfinished)"
+		STATE_FINISHED: return "Bottle car"
 	return "Bottle"
+
+
+func _get_state():
+	var pieces_count = 0
+	for piece in _pieces:
+		if piece.visible:
+			pieces_count += 1
+	if pieces_count == _pieces.size():
+		return STATE_FINISHED
+	elif pieces_count > 0:
+		return STATE_PROGRESS
+	return STATE_NONE
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == ANIM_NAME_INFLATE:
+		_balloon_anim.play(ANIM_NAME_DEFLATE)

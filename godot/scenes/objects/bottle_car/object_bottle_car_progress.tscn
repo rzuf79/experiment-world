@@ -501,7 +501,7 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442726, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.442726, 0)
-bones/2/rotation = Quaternion(0.53556, 0, 0, 0.844497)
+bones/2/rotation = Quaternion(0.53556, 0, 0, 0.844498)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.003"
 bones/3/parent = 2
@@ -527,3 +527,8 @@ metadata/no_outline = true
 libraries = {
 "": SubResource("AnimationLibrary_bqcuc")
 }
+
+[node name="Exhaust" type="Marker3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.428753)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

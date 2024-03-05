@@ -90,6 +90,7 @@ func grab(object : Grabbable):
 	drop() # if any
 	_hand_object = object
 	_hand_object.connect("removed", _on_hand_object_removed)
+	_hand_object.connect("request_drop", _on_hand_object_request_drop)
 	_hand_object.set_snap_target(_hand_marker)
 	_hand_object.set_raycast_exclude(_head_raycast, true)
 
@@ -97,6 +98,7 @@ func grab(object : Grabbable):
 func drop():
 	if _hand_object:
 		_hand_object.disconnect("removed", _on_hand_object_removed)
+		_hand_object.disconnect("request_drop", _on_hand_object_request_drop)
 		_hand_object.set_snap_target(null)
 		_hand_object.set_raycast_exclude(_head_raycast, false)
 		_hand_object = null
@@ -117,3 +119,7 @@ func _on_focused_object_removed():
 
 func _on_hand_object_removed():
 	_hand_object = null
+
+
+func _on_hand_object_request_drop():
+	drop()

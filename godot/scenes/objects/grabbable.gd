@@ -12,6 +12,7 @@ class DisabledRigidbody:
 const SNAP_SPEED = 10.0
 
 signal removed()
+signal request_drop()
 
 @export var display_name : String = "" : get = _get_display_name
 @export var outline_material : Material
