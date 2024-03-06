@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://difx5rwgdqqnn"]
+[gd_scene load_steps=58 format=3 uid="uid://difx5rwgdqqnn"]
 
 [ext_resource type="PackedScene" uid="uid://dx6deyxv4obqq" path="res://scenes/locations/location_base.tscn" id="1_g6nrk"]
 [ext_resource type="Texture2D" uid="uid://ddbb87ruf4smf" path="res://gfx/crappy_textures/checkered_floor_128.png" id="2_n7lmm"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://btns21bu6d8s8" path="res://3d/misc_models/window_small.glb" id="12_mpsrv"]
 [ext_resource type="PackedScene" uid="uid://cirost61fawfh" path="res://3d/misc_models/whiteboard.glb" id="13_4460d"]
 [ext_resource type="Texture2D" uid="uid://cgc0p6bib2n7f" path="res://gfx/misc/fuzzy_circle_32.png" id="13_fbcfu"]
+[ext_resource type="Texture2D" uid="uid://biirtjywkiqmf" path="res://gfx/whiteboard_textures/scheme_bottle_car.png" id="14_5lhtf"]
 [ext_resource type="PackedScene" uid="uid://byuwyeetqgep3" path="res://scenes/objects/object_hobby_knife.tscn" id="15_kbtgt"]
 [ext_resource type="PackedScene" uid="uid://0p28q1amfhfi" path="res://scenes/objects/object_scissors.tscn" id="16_a2m2l"]
 [ext_resource type="PackedScene" uid="uid://bvfxcbys0rlyv" path="res://scenes/objects/object_plastic_straw.tscn" id="16_pmvk2"]
@@ -139,6 +140,13 @@ size = Vector3(0.041214, 0.781677, 1.12866)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk80e"]
 size = Vector3(0.543945, 0.0213013, 1.13696)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3q0wm"]
+albedo_texture = ExtResource("14_5lhtf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_l8myf"]
+material = SubResource("StandardMaterial3D_3q0wm")
+size = Vector2(1.08, 0.73)
 
 [sub_resource type="Curve" id="Curve_0uj4s"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.251832, 0.476762), 0.0, 0.0, 0, 0, Vector2(0.71337, 0.479108), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -393,18 +401,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0181695, 0, 0)
 transform = Transform3D(1.00001, 0, 0, 0, 1.00001, 0, 0, 0, 1.00001, -0.00131202, 0.619791, -0.00854492)
 shape = SubResource("BoxShape3D_mimsx")
 
-[node name="whiteboard" parent="Props" index="15" instance=ExtResource("13_4460d")]
-transform = Transform3D(-1.87358, 6.53479e-16, -1.63793e-07, 6.53479e-16, 1.87358, -6.53479e-16, 1.63793e-07, -6.53479e-16, -1.87358, 4.91043, 1.50282, -2.52046)
+[node name="Whiteboard" parent="Props" index="15" instance=ExtResource("13_4460d")]
+transform = Transform3D(-1.87358, 6.53479e-16, -1.63793e-07, 6.53479e-16, 1.87358, -6.53479e-16, 1.63793e-07, -6.53479e-16, -1.87358, 4.91043, 1.50722, -2.52046)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Props/whiteboard" index="1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Props/Whiteboard" index="1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/whiteboard/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Whiteboard/StaticBody3D" index="0"]
 transform = Transform3D(1, 1.45702e-20, 3.28399e-14, -2.14753e-22, 1, -1.63192e-22, 1.35167e-14, -1.46308e-20, 1, -0.0304031, 0.260406, 0.00354004)
 shape = SubResource("BoxShape3D_hwd7q")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Props/whiteboard/StaticBody3D" index="1"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Props/Whiteboard/StaticBody3D" index="1"]
 transform = Transform3D(1, 1.10383e-20, 3.28399e-14, -2.14753e-22, 1, -1.63192e-22, 1.35167e-14, -1.10988e-20, 1, -0.228028, -0.128326, -0.00012219)
 shape = SubResource("BoxShape3D_xk80e")
+
+[node name="WhiteboardCanvas" type="MeshInstance3D" parent="Props/Whiteboard" index="2"]
+transform = Transform3D(-4.37113e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -0.016731, 0.269385, 0)
+mesh = SubResource("QuadMesh_l8myf")
 
 [node name="Objects" type="Node3D" parent="." index="2"]
 
