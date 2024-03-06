@@ -6,7 +6,6 @@ extends Node3D
 
 func _ready():
 	_player.connect("focused_object_changed", _hud.set_focused_object)
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _input(event : InputEvent):

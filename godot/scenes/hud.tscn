@@ -54,6 +54,20 @@ grow_horizontal = 2
 label_settings = SubResource("LabelSettings_j045a")
 horizontal_alignment = 1
 
+[node name="LabelUse" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -96.0
+offset_right = 688.0
+offset_bottom = -35.0
+grow_vertical = 0
+text = "[LMB] Use"
+label_settings = SubResource("LabelSettings_j045a")
+
 [node name="LabelFPS" type="Label" parent="."]
 layout_mode = 0
 offset_left = 7.0
