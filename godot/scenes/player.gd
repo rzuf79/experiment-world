@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 4.5
 const CAMERA_SENSITIVITY = 50.0
 
 signal focused_object_changed(object)
+signal grabbed_object_changed(object)
 
 @onready var _camera = $Camera3D
 @onready var _mesh = $MeshInstance3D
@@ -93,6 +94,7 @@ func grab(object : Grabbable):
 	_hand_object.connect("request_drop", _on_hand_object_request_drop)
 	_hand_object.set_snap_target(_hand_marker)
 	_hand_object.set_raycast_exclude(_head_raycast, true)
+	emit_signal("grabbed_object_changed", _hand_object)
 
 
 func drop():
@@ -102,6 +104,7 @@ func drop():
 		_hand_object.set_snap_target(null)
 		_hand_object.set_raycast_exclude(_head_raycast, false)
 		_hand_object = null
+		emit_signal("grabbed_object_changed", null)
 
 
 func _rotate_camera(delta : float, sensitivity_mod : float = 1.0):

@@ -113,6 +113,7 @@ size = Vector3(0.492676, 0.913818, 0.411377)
 [node name="ObjectScissors" instance=ExtResource("1_hmsnr")]
 display_name = "Scissors"
 on_use_anim_name = "cut"
+usable = true
 
 [node name="CollisionShape" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000733159, 0.1221, 0.00683405)

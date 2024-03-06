@@ -19,6 +19,7 @@ signal request_drop()
 @export var interactions : Array[ObjectInteraction]
 @export var spawn_particle : PackedScene
 @export var on_use_anim_name : String = ""
+@export var usable := false : get = _get_usable
 
 @onready var _pick_area = $PickArea
 
@@ -189,3 +190,7 @@ func _set_rigidbody_enabled(rigid_node : RigidBody3D, value : bool):
 
 func _get_display_name():
 	return display_name
+
+
+func _get_usable():
+	return usable

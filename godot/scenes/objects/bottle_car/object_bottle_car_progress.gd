@@ -76,6 +76,10 @@ func _get_display_name():
 	return "Bottle"
 
 
+func _get_usable():
+	return _get_state() == STATE_FINISHED
+
+
 func _is_rolling():
 	return _balloon_anim.is_playing() && _balloon_anim.current_animation == ANIM_NAME_DEFLATE
 
