@@ -30,7 +30,8 @@ ssao_power = 15.0
 sdfgi_enabled = true
 glow_enabled = true
 glow_normalized = true
-glow_bloom = 0.16
+glow_intensity = 0.2
+glow_bloom = 0.37
 glow_blend_mode = 0
 volumetric_fog_density = 0.06
 

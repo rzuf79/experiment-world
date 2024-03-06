@@ -39,6 +39,7 @@ func set_grabbed_object(object):
 	
 	_grabbed_object = object
 
+
 func _on_focused_object_removed():
 	set_focused_object(null)
 

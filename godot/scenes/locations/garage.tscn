@@ -143,6 +143,9 @@ size = Vector3(0.543945, 0.0213013, 1.13696)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3q0wm"]
 albedo_texture = ExtResource("14_5lhtf")
+metallic = 0.34
+roughness = 0.1
+anisotropy = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_l8myf"]
 material = SubResource("StandardMaterial3D_3q0wm")
