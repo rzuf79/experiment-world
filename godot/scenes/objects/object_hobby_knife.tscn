@@ -44,7 +44,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cx1xb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ya3x2"]
-size = Vector3(0.242188, 0.68219, 0.218994)
+size = Vector3(0.143921, 0.477615, 0.128723)
 
 [sub_resource type="Animation" id="Animation_e8qtc"]
 resource_name = "stab"
@@ -85,10 +85,10 @@ display_name = "Hobby knife"
 on_use_anim_name = "stab"
 
 [node name="CollisionShape" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000351012, 0.0841847, 0.00468497)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000147675, 0.0634599, 9.30578e-05)
 
 [node name="Hobby Knife" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(0.611755, 0, 0, 0, 0.611755, 0, 0, 0, 0.611755, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+transform = Transform3D(0.45468, 0, 0, 0, 0.45468, 0, 0, 0, 0.45468, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 mesh = SubResource("ArrayMesh_s6nlp")
 skeleton = NodePath("")
 
@@ -96,7 +96,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.046549, 0)
 
 [node name="CollisionShape3D" parent="PickArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00390625, 0.039154, -0.00427246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00506598, 0.0277633, 0.00119021)
 shape = SubResource("BoxShape3D_ya3x2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]

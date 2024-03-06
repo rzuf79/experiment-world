@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b12gyftm66j16" path="res://scenes/particles/spawn_dust.tscn" id="3_21ude"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6bjyr"]
-size = Vector3(0.0284026, 0.623472, 0.0340655)
+size = Vector3(0.0760093, 0.437401, 0.0650349)
 
 [node name="Grabbable" type="RigidBody3D" groups=["interactables"]]
 collision_layer = 4

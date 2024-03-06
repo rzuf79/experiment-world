@@ -28,4 +28,4 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="HandMarker" type="Marker3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.199618, -0.714)

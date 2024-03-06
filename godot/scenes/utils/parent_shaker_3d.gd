@@ -19,7 +19,6 @@ func _process(_delta):
 			randf_range(0, strength)
 		)
 		get_parent().position = _root_position + displacement
-		print(get_parent().position )
 	else:
 		if _last_shaking:
 			get_parent().position = _root_position
